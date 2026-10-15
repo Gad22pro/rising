@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rising Sport Academy — Developing the next generation of football champions in Kigali, Rwanda since 2021. Join our junior, youth and senior training programs.">
+<meta name="keywords" content="football academy Rwanda, Rising Sport Academy, Kigali football, youth football Rwanda, football training Gisozi">
+<meta name="author" content="Rising Sport Academy">
+<meta property="og:title" content="Rising Sport Academy — Kigali, Rwanda">
+<meta property="og:description" content="Developing the next generation of football champions since 2021. Train Hard. Rise Higher.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_RW">
+<meta name="theme-color" content="#00C853">
+<title>Rising Sport Academy | Football Club Kigali, Rwanda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--g:#00C853;--dg:#007A33;--bg:#0a0a0a;--card:#161616;--b:rgba(0,200,83,0.18);--tx:#e8e8e8;--mu:#888}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+button{cursor:pointer;font-family:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;
+  background:rgba(10,10,10,0.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--b);height:68px;
+  display:flex;align-items:center;padding:0 32px;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.lci{width:44px;height:44px;border-radius:50%;border:2px solid var(--g);
+  background:linear-gradient(135deg,#007A33,#00C853);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue';font-size:14px;color:#fff;
+  overflow:hidden;flex-shrink:0;position:relative}
+.lci img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:none;border-radius:50%}
+.lci img.vs{display:block}
+.lci:has(img.vs) .ini{display:none}
+.brand-name{font-family:'Bebas Neue';font-size:19px;letter-spacing:2px;line-height:1;color:var(--tx)}
+.brand-sub{color:var(--g);display:block;font-size:10px;letter-spacing:4px;font-family:'Barlow Condensed';margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nl{background:none;border:none;color:var(--mu);
+  font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 14px;border-radius:3px;transition:color .2s;position:relative}
+.nl::after{content:'';position:absolute;bottom:4px;left:14px;right:14px;
+  height:2px;background:var(--g);transform:scaleX(0);transition:transform .2s}
+.nl:hover,.nl.active{color:var(--g)}
+.nl:hover::after,.nl.active::after{transform:scaleX(1)}
+.nav-cta{background:var(--g);color:#000;border:none;
+  font-family:'Barlow Condensed';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:9px 20px;border-radius:2px;transition:background .2s,transform .2s;margin-left:8px}
+.nav-cta:hover{background:#00e05c;transform:translateY(-1px)}
+.nav-burger{display:none;background:none;border:none;color:var(--tx);font-size:24px;margin-left:auto;line-height:1}
+/* SOCIAL ICONS — hero + footer */
+.follow-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.follow-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap}
+.fsoc{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);transition:all .25s;padding:0;text-decoration:none}
+.fsoc:hover{transform:translateY(-3px);border-color:transparent;background:rgba(255,255,255,.25)}
+.fsoc svg{width:20px;height:20px;fill:#fff;display:block}
+.fsoc.ig:hover{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+.fsoc.tt:hover{background:#010101;border-color:#333}
+.fsoc.tw:hover{background:#1a1a1a;border-color:#555}
+.fsoc.yt:hover{background:#FF0000;border-color:#FF0000}
+/* hero social — right side over slideshow */
+.hero-social{position:absolute;bottom:70px;right:40px;z-index:10}
+/* footer icons slightly smaller */
+.footer-follow .follow-label{color:var(--mu);font-size:10px}
+.footer-follow .fsoc{width:34px;height:34px}
+.footer-follow .fsoc svg{width:17px;height:17px}
+/* contact icons */
+.contact-follow .fsoc{width:38px;height:38px}
+.contact-follow .fsoc svg{width:19px;height:19px}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:block}
+
+/* HERO */
+.hero{position:relative;height:calc(100vh - 68px);min-height:500px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+.hero-slides{position:absolute;inset:0}
+.hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s cubic-bezier(.4,0,.2,1);z-index:0}
+.hslide.active{opacity:1;z-index:1}
+/* fallback gradient backgrounds */
+.hslide-bg{position:absolute;inset:0;z-index:0}
+.bg1{background:linear-gradient(135deg,#0a0a0a 0%,#0d2010 50%,#081508 100%)}
+.bg2{background:linear-gradient(135deg,#0a0a0a 0%,#10180d 50%,#0a0a0a 100%)}
+.bg3{background:linear-gradient(135deg,#050f05 0%,#0a1a08 50%,#0a0a0a 100%)}
+/* photo sits above bg, fills entire slide */
+.hslide-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;display:none}
+.hslide-img.vs{display:block}
+.hslide:has(.hslide-img.vs) .hslide-bg{display:none}
+/* overlay on top of photo — subtle, not heavy */
+.hslide-overlay{position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to right,rgba(0,0,0,.65) 0%,rgba(0,0,0,.2) 60%,rgba(0,0,0,.1) 100%),
+             linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 45%)}
+/* Arrow buttons */
+.hero-prev,.hero-next{position:absolute;top:50%;transform:translateY(-50%);z-index:10;
+  background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);
+  color:#fff;width:48px;height:48px;border-radius:50%;font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s,border-color .25s,transform .25s;backdrop-filter:blur(6px)}
+.hero-prev{left:24px}
+.hero-next{right:24px}
+.hero-prev:hover{background:rgba(0,200,83,.5);border-color:var(--g);transform:translateY(-50%) scale(1.1)}
+.hero-next:hover{background:rgba(0,200,83,.5);border-color:var(--g);transform:translateY(-50%) scale(1.1)}
+/* Dot indicators */
+.hero-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10}
+.hdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);border:none;padding:0;
+  cursor:pointer;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.hdot.active{background:var(--g);width:28px;border-radius:4px}
+/* Progress bar at top of hero */
+.hero-progress{position:absolute;top:0;left:0;height:3px;background:var(--g);
+  width:0%;z-index:10;transition:width linear;box-shadow:0 0 8px rgba(0,200,83,.6)}
+.hero-content{position:absolute;inset:0;z-index:8;display:flex;align-items:center;padding:0 60px}
+.hbadge{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,200,83,.08);border:1px solid var(--b);
+  padding:5px 14px;border-radius:2px;
+  font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--g);margin-bottom:22px}
+.hbadge::before{content:'';width:6px;height:6px;background:var(--g);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.htitle{font-family:'Bebas Neue';font-size:clamp(56px,8vw,110px);
+  line-height:.9;letter-spacing:2px;margin-bottom:20px;transition:opacity .4s}
+.htitle em{color:var(--g);font-style:normal}
+.hdesc{font-size:16px;font-weight:300;color:rgba(255,255,255,.7);
+  line-height:1.75;max-width:480px;margin-bottom:32px;min-height:52px;transition:opacity .4s}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.hbtn{font-family:'Barlow Condensed';font-size:13px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:12px 28px;border-radius:2px;transition:all .2s;border:none}
+.hbtn-p{background:var(--g);color:#000}
+.hbtn-p:hover{background:#00e05c;transform:translateY(-2px)}
+.hbtn-s{background:transparent;color:var(--tx);border:1px solid rgba(255,255,255,.2)!important}
+.hbtn-s:hover{border-color:var(--g)!important;color:var(--g)}
+.hstats{display:flex;gap:44px}
+.hstat-num{font-family:'Bebas Neue';font-size:50px;color:var(--g);line-height:1;display:block}
+.hstat-lbl{font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--mu)}
+
+/* SECTIONS */
+.sec{padding:72px 0}
+.container{max-width:1400px;margin:0 auto;padding:0 40px}
+.sec-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--g);display:block;margin-bottom:10px}
+.sec-title{font-family:'Bebas Neue';font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:1px;margin-bottom:12px}
+.sec-div{width:50px;height:3px;background:var(--g);margin-bottom:36px;border-radius:2px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+
+/* Convert video URLs to embeddable format */
+function getEmbedUrl(url){
+  if(!url)return null;
+  try{
+    // YouTube
+    const yt=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+    if(yt)return `https://www.youtube.com/embed/${yt[1]}?autoplay=0`;
+    // YouTube Shorts
+    const yts=url.match(/youtube\.com\/shorts\/([^?&\s]+)/);
+    if(yts)return `https://www.youtube.com/embed/${yts[1]}`;
+    // TikTok — can't embed directly, just return null
+    if(url.includes('tiktok.com'))return null;
+    // Facebook video
+    if(url.includes('facebook.com'))return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false`;
+    // Return as-is for other URLs
+    return url;
+  }catch(e){return null;}
+}
+/* NEWS */
+.news-card{background:var(--bg);overflow:hidden;cursor:pointer}
+.news-card:hover .nthumb img.vs{transform:scale(1.04)}
+.nthumb{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:64px;background:#111;overflow:hidden;position:relative}
+.nthumb img,.nthumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:none;transition:transform .4s ease}
+.nthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.nthumb img.vs,.nthumb video.vs{display:block}
+.nthumb:has(img.vs) span,.nthumb:has(video.vs) span{display:none}
+.nbody{padding:14px 2px}
+.nmeta{display:inline-block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-top:10px;font-family:'Barlow Condensed';border:1px solid rgba(255,255,255,.12);padding:3px 10px;border-radius:2px}
+.ncard-title{font-size:20px;font-weight:700;line-height:1.25;color:var(--tx);margin-bottom:0}
+.ncard-text{font-size:13px;color:var(--mu);line-height:1.6;margin:8px 0 0}
+
+/* PROGRAMS */
+.progs-sec{background:var(--card);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
+.pcard{background:var(--bg);border:1px solid var(--b);border-radius:4px;padding:26px 20px;transition:all .25s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--g);transition:height .3s}
+.pcard:hover::before{height:100%}
+.pcard:hover{border-color:rgba(0,200,83,.45);transform:translateY(-3px)}
+.picon{font-size:34px;display:block;margin-bottom:12px}
+.pcard h3{font-family:'Bebas Neue';font-size:22px;letter-spacing:1px;margin-bottom:8px}
+.pcard p{font-size:14px;color:var(--mu);line-height:1.65}
+.ptag{display:inline-block;background:rgba(0,200,83,.1);color:var(--g);padding:3px 10px;font-size:11px;border-radius:2px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase;margin-top:10px}
+
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{width:100%;aspect-ratio:1;background:linear-gradient(135deg,#1a3a1a,#0d200d);border:1px solid var(--b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:90px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.vitem{background:var(--card);border:1px solid var(--b);padding:14px;border-radius:4px}
+.vitem h4{font-family:'Barlow Condensed';font-size:13px;font-weight:700;letter-spacing:1px;color:var(--g);margin-bottom:4px}
+.vitem p{font-size:12px;color:var(--mu);margin:0;line-height:1.5}
+
+/* STAFF */
+.scard{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:22px 14px;text-align:center;transition:border-color .2s,transform .2s}
+.scard:hover{border-color:var(--g);transform:translateY(-4px)}
+.scard-img{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center;display:block;margin:0 auto 12px;border:2px solid rgba(0,200,83,.3)}
+.scard-img-placeholder{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--dg),var(--g));display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 12px}
+.savatar{width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,var(--dg),var(--g));margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden;border:2px solid var(--b)}
+.savatar img{width:100%;height:100%;object-fit:cover}
+.scard h3{font-size:14px;font-weight:700;margin-bottom:3px}
+.scard span{font-size:11px;color:var(--g);letter-spacing:1px;font-family:'Barlow Condensed';text-transform:uppercase}
+
+/* ACHIEVEMENTS */
+.ach-banner{background:linear-gradient(180deg,#001a00,var(--bg));padding:60px 0;border-bottom:1px solid var(--b)}
+.bstats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--b);border-radius:4px;overflow:hidden;background:var(--card);margin-top:40px}
+.bstat{padding:32px 20px;text-align:center;border-right:1px solid var(--b)}
+.bstat:last-child{border-right:none}
+.bstat span{font-family:'Bebas Neue';font-size:58px;color:var(--g);display:block;line-height:1}
+.bstat p{font-family:'Barlow Condensed';font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-top:4px}
+.trophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcard{position:relative;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.1);aspect-ratio:4/3;background:#0a0a0a;cursor:pointer;transition:border-color .3s,transform .3s}
+.tcard:hover{border-color:var(--g);transform:translateY(-4px)}
+.tcard-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px}
+.tcard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:none}
+.tcard-img img.vs{display:block}
+.tcard-img:has(img.vs) span{display:none}
+.tcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.2) 50%,transparent 100%)}
+.tcbody{position:absolute;bottom:0;left:0;right:0;padding:20px}
+.tyear{font-family:'Bebas Neue';font-size:44px;color:var(--g);line-height:1;letter-spacing:2px;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.tcbody h5{font-size:16px;font-weight:700;color:#fff;margin:6px 0 0;line-height:1.3;text-transform:lowercase;text-shadow:0 1px 6px rgba(0,0,0,.9)}
+
+/* GALLERY */
+.filts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filt{background:transparent;border:1px solid var(--b);color:var(--mu);padding:6px 16px;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;border-radius:2px;transition:all .2s}
+.filt:hover,.filt.active{background:var(--g);border-color:var(--g);color:#000}
+.galgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gitem{aspect-ratio:4/3;background:var(--card);border:1px solid var(--b);border-radius:4px;overflow:hidden;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;font-size:44px;transition:transform .2s}
+.gitem:hover{transform:scale(1.03)}
+.gitem img{width:100%;height:100%;object-fit:cover}
+.gover{position:absolute;inset:0;background:rgba(0,200,83,.14);opacity:0;transition:opacity .2s;display:flex;align-items:center;justify-content:center;font-size:24px}
+.gitem:hover .gover{opacity:1}
+
+/* LIGHTBOX */
+.lbox{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.96);align-items:center;justify-content:center}
+.lbox.open{display:flex}
+.lbclose{position:absolute;top:18px;right:24px;font-size:26px;color:var(--g);background:none;border:none}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:56px}
+.cinfo-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:22px}
+.cicon{width:40px;height:40px;background:rgba(0,200,83,.08);border:1px solid var(--b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.clabel{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--g);font-family:'Barlow Condensed';display:block;margin-bottom:2px}
+.cval{font-size:14px}
+.cform-box{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:28px}
+.cform-box h3{font-family:'Bebas Neue';font-size:26px;letter-spacing:1px;margin-bottom:18px}
+
+/* FORM INPUTS */
+.fi{margin-bottom:16px}
+.fi label{display:block;font-family:'Barlow Condensed';font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.inp{width:100%;background:#111;border:1px solid var(--b);border-radius:2px;padding:11px 14px;color:var(--tx);font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;resize:vertical}
+.inp:focus{border-color:var(--g)}
+.inp option{background:#111}
+.sbtn{width:100%;background:var(--g);color:#000;border:none;font-family:'Barlow Condensed';font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:13px;border-radius:2px;transition:background .2s}
+.sbtn:hover{background:#00e05c}
+
+/* ALERTS */
+.alert{padding:10px 14px;border-radius:3px;font-size:13px;display:none;margin-top:10px;font-family:'Barlow Condensed';letter-spacing:1px}
+.alert-ok{background:rgba(0,200,83,.1);border:1px solid rgba(0,200,83,.4);color:var(--g)}
+.alert-err{background:rgba(220,50,50,.1);border:1px solid rgba(220,50,50,.3);color:#ff6b6b}
+
+/* FOOTER */
+footer{background:#070707;border-top:1px solid var(--b);padding:52px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.fbrand{font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:12px}
+.fbrand em{color:var(--g);font-style:normal}
+.ftitle{font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+.flinks{list-style:none}
+.flinks li{margin-bottom:8px}
+.flinks a{color:var(--mu);text-decoration:none;font-size:13px;transition:color .2s;cursor:pointer}
+.flinks a:hover{color:var(--g)}
+.fcopy{border-top:1px solid var(--b);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mu)}
+
+/* LOGIN OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:9000;background:var(--bg);overflow-y:auto}
+.overlay.open{display:block}
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+.login-box{background:var(--card);border:1px solid var(--b);border-radius:8px;padding:40px;width:400px;max-width:95vw}
+
+/* ADMIN */
+.admin-layout{display:flex;min-height:100vh}
+.sidebar{width:240px;background:var(--card);border-right:1px solid var(--b);position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:10}
+.sb-logo{padding:18px;border-bottom:1px solid var(--b);font-family:'Bebas Neue';font-size:16px;letter-spacing:2px;color:var(--g)}
+.sb-nav{list-style:none;padding:8px 0}
+.sb-nav li a,.sb-nav li button{display:flex;align-items:center;gap:10px;padding:10px 18px;color:var(--mu);font-family:'Barlow Condensed';font-size:12px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;background:none;border:none;width:100%;transition:all .2s;border-left:3px solid transparent}
+.sb-nav li a:hover,.sb-nav li a.active{color:var(--g);background:rgba(0,200,83,.05);border-left-color:var(--g)}
+.sb-nav li button:hover{color:#ff6b6b}
+.admin-body{margin-left:240px;padding:28px;min-height:100vh}
+.ahead{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--b)}
+.ahead h1{font-family:'Bebas Neue';font-size:34px;margin:0}
+.acards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.acard{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:18px}
+.acard .num{font-family:'Bebas Neue';font-size:44px;color:var(--g);line-height:1}
+.acard p{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--mu);font-family:'Barlow Condensed';margin:3px 0 0}
+.aform{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:22px;margin-bottom:24px}
+.aform h2{font-family:'Bebas Neue';font-size:22px;margin-bottom:16px}
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.aitem{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.aitem h4{font-size:13px;font-weight:700;margin:0}
+.aitem span{font-size:11px;color:var(--mu)}
+.btn-admin{background:var(--g);color:#000;border:none;font-family:'Barlow Condensed';font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:10px 22px;border-radius:2px;transition:background .2s}
+.btn-admin:hover{background:#00e05c}
+.btn-admin-sm{background:var(--g);color:#000;border:none;font-family:'Barlow Condensed';font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:2px;transition:background .2s}
+.btn-admin-sm:hover{background:#00e05c}
+.delbtn{background:rgba(220,50,50,.1);border:1px solid rgba(220,50,50,.25);color:#ff6b6b;padding:5px 12px;border-radius:2px;font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.delbtn:hover{background:rgba(220,50,50,.25)}
+.tab-rsa{display:none}
+.tab-rsa.active{display:block}
+.gman{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.gthumb{aspect-ratio:1;background:var(--bg);border:1px solid var(--b);border-radius:4px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-size:28px}
+.gthumb img{width:100%;height:100%;object-fit:cover}
+.gthumb-del{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.75);border:none;color:#ff6b6b;width:20px;height:20px;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center}
+.addzone{aspect-ratio:1;background:transparent;border:2px dashed var(--b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--mu);transition:all .2s}
+.addzone:hover{border-color:var(--g);color:var(--g)}
+
+/* Hero slide admin */
+.hsman{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.hsthumb{aspect-ratio:16/9;background:var(--bg);border:2px dashed var(--b);border-radius:4px;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:border-color .2s}
+.hsthumb:hover{border-color:var(--g)}
+.hsthumb.has-photo{border-style:solid;border-color:var(--g)}
+.hsthumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hsthumb-over{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;transition:opacity .2s}
+.hsthumb:hover .hsthumb-over{opacity:1}
+.hsthumb-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,200,83,.2);border-top:1px solid var(--b);font-family:'Barlow Condensed';font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--g);padding:4px 8px;text-align:center}
+
+/* Staff/ach admin */
+.photo-upl{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--dg),var(--g));display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;cursor:pointer;border:2px dashed var(--b);transition:border-color .2s;flex-shrink:0;position:relative}
+.photo-upl:hover{border-color:var(--g)}
+.photo-upl img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:none}
+.photo-upl img.vs{display:block}
+.photo-upl:has(img.vs) span{display:none}
+.staff-ac{background:var(--bg);border:1px solid var(--b);border-radius:4px;padding:16px;display:flex;gap:12px;align-items:center}
+.staff-ac h4{font-size:13px;font-weight:700;margin-bottom:2px}
+.staff-ac span{font-size:11px;color:var(--g);font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase}
+.ach-ai{background:var(--bg);border:1px solid var(--b);border-radius:4px;padding:13px;display:flex;gap:12px;align-items:center}
+.ach-thumb{width:56px;height:56px;border-radius:4px;background:linear-gradient(135deg,#001a00,#002d00);display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0;cursor:pointer;border:1px dashed var(--b);transition:border-color .2s}
+.ach-thumb:hover{border-color:var(--g)}
+.ach-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* Submissions */
+.sub-card{background:var(--bg);border:1px solid var(--b);border-radius:4px;padding:16px;margin-bottom:12px}
+.sub-badge{font-family:'Barlow Condensed';font-size:11px;letter-spacing:1px;text-transform:uppercase;background:rgba(0,200,83,.1);color:var(--g);padding:2px 9px;border-radius:2px}
+.sub-msg{font-size:13px;color:var(--tx);line-height:1.7;border-left:3px solid var(--g);padding-left:10px;margin-top:8px}
+.sub-empty{color:var(--mu);font-size:14px;text-align:center;padding:36px;border:1px dashed var(--b);border-radius:4px}
+.badge-new{display:inline-block;background:var(--g);color:#000;font-size:10px;font-family:'Barlow Condensed';letter-spacing:1px;padding:2px 6px;border-radius:2px;margin-left:5px;vertical-align:middle}
+.uplzone{background:var(--bg);border:2px dashed var(--b);border-radius:4px;padding:32px;text-align:center;cursor:pointer;transition:border-color .2s}
+.uplzone:hover{border-color:var(--g)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .grid-3{grid-template-columns:1fr 1fr}
+  .trophy-grid{grid-template-columns:1fr 1fr}
+  .news-grid{grid-template-columns:1fr 1fr}
+  .galgrid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .about-layout{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr}
+  .hero-content{padding:0 32px}
+}
+@media(max-width:640px){
+  .grid-3{grid-template-columns:1fr}
+  .trophy-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:rgba(10,10,10,.98);flex-direction:column;padding:12px 0;border-bottom:1px solid var(--b)}
+  .nav-links.open{display:flex}
+  .nav-burger{display:block}
+  .nav-socials{display:none}
+  .hero-content{padding:0 20px}
+  .htitle{font-size:52px}
+  .hstats{gap:24px}
+  .sidebar{display:none}
+  .admin-body{margin-left:0}
+  .acards{grid-template-columns:1fr 1fr}
+  .arow{grid-template-columns:1fr}
+  .hsman{grid-template-columns:1fr 1fr}
+  .bstats{grid-template-columns:1fr}
+  .bstat{border-right:none;border-bottom:1px solid var(--b)}
+  .footer-grid{grid-template-columns:1fr}
+  .settings-grid{grid-template-columns:1fr!important}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PROGRAMS WITH PHOTO */
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.pcard{position:relative;overflow:hidden;transition:transform .3s}
+.pcard:hover{transform:translateY(-6px);z-index:2}
+.pcard-photo{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#0d1a0d,#0a100a);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;font-size:72px}
+.pcard-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:none}
+.pcard-photo img.vs{display:block}
+.pcard-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)}
+.pcard-photo-edit{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);color:#fff;padding:5px 12px;border-radius:4px;font-size:11px;font-family:"Barlow Condensed";letter-spacing:1px;cursor:pointer;z-index:2;display:none}
+.pcard-inner{position:relative;z-index:1;padding:28px 28px 32px;border-right:1px solid rgba(255,255,255,.06)}
+.pcard:last-child .pcard-inner{border-right:none}
+.pcard-accent{width:44px;height:4px;border-radius:2px;margin-bottom:20px}
+.pcard-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,200,83,.1);border:1px solid rgba(0,200,83,.2);color:var(--g);padding:5px 14px;font-size:11px;border-radius:100px;font-family:"Barlow Condensed";letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;width:fit-content}
+.pcard h3{font-family:"Bebas Neue";font-size:34px;letter-spacing:2px;margin-bottom:10px;line-height:1}
+.pcard-desc{font-size:13px;color:var(--mu);line-height:1.75;margin-bottom:20px}
+.pcard-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.pcard-features li{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,.7)}
+.pcard-features li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--g);flex-shrink:0}
+.pcard-cta{display:inline-flex;align-items:center;gap:8px;color:var(--g);font-family:"Barlow Condensed";font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:700;cursor:pointer;background:none;border:none;padding:0;transition:gap .2s}
+.pcard-cta:hover{gap:14px}
+.pcard:nth-child(2) .pcard-inner{background:rgba(0,200,83,.03)}
+.pcard:nth-child(2) .pcard-accent{background:var(--g)}
+.pcard:nth-child(1) .pcard-accent,.pcard:nth-child(3) .pcard-accent{background:rgba(255,255,255,.2)}
+@media(max-width:768px){.programs-grid{grid-template-columns:1fr}.pcard-inner{border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06)}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand" onclick="goPage('home')">
+    <div class="lci"><img id="navLogoImg" src="" alt=""><span class="ini">RSA</span></div>
+    <div>
+      <span class="brand-name">Rising Sport Academy</span>
+      <small class="brand-sub">Football Club · Est. 2021</small>
+    </div>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <button class="nl active" id="nav-home" onclick="goPage('home')">Home</button>
+    <button class="nl" id="nav-about" onclick="goPage('about')">About</button>
+    <button class="nl" id="nav-teams" onclick="goPage('teams')">Teams</button>
+    <button class="nl" id="nav-news" onclick="goPage('news')">News</button>
+    <button class="nl" id="nav-ach" onclick="goPage('achievements')">Achievements</button>
+    <button class="nl" id="nav-gal" onclick="goPage('gallery')">Gallery</button>
+    <button class="nl" id="nav-con" onclick="goPage('contact')">Contact</button>
+    <button class="nav-cta" onclick="goPage('trials')">Apply Now</button>
+  </div>
+  <button class="nav-burger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+
+  <!-- HERO SLIDESHOW -->
+  <div class="hero">
+    <div class="hero-progress" id="heroProgress"></div>
+    <div class="hero-slides">
+      <div class="hslide active" id="hslide-0">
+        <div class="hslide-bg bg1"></div>
+        <img class="hslide-img" id="hslide-img-0" src="" alt="">
+        <div class="hslide-overlay"></div>
+      </div>
+      <div class="hslide" id="hslide-1">
+        <div class="hslide-bg bg2"></div>
+        <img class="hslide-img" id="hslide-img-1" src="" alt="">
+        <div class="hslide-overlay"></div>
+      </div>
+      <div class="hslide" id="hslide-2">
+        <div class="hslide-bg bg3"></div>
+        <img class="hslide-img" id="hslide-img-2" src="" alt="">
+        <div class="hslide-overlay"></div>
+      </div>
+    </div>
+    <button class="hero-prev" onclick="heroNav(-1)">&#8592;</button>
+    <button class="hero-next" onclick="heroNav(1)">&#8594;</button>    <!-- Social strip over the slideshow -->
+    <div class="hero-social">
+      <div class="follow-bar">
+        <span class="follow-label">Follow us on</span>
+        <a class="fsoc ig" id="slink-ig-hero" href="#" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a class="fsoc tt" id="slink-tt-hero" href="#" target="_blank" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        <a class="fsoc tw" id="slink-tw-hero" href="#" target="_blank" title="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a class="fsoc yt" id="slink-yt-hero" href="#" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="hdot active" onclick="heroGo(0)"></button>
+      <button class="hdot" onclick="heroGo(1)"></button>
+      <button class="hdot" onclick="heroGo(2)"></button>
+    </div>
+    <div class="hero-content">
+      <div>
+        <div class="hbadge">Kigali, Rwanda · Est. 2021</div>
+        <h1 class="htitle" id="heroTitle">Train Hard.<br><em>Rise Higher.</em></h1>
+        <p class="hdesc" id="heroDesc">Where raw talent meets elite coaching. Rising Sport Academy develops the next generation of football champions through discipline, passion, and world-class training.</p>
+        <div class="hbtns">
+          <button class="hbtn hbtn-p" onclick="goPage('contact')">Enroll Today</button>
+          <button class="hbtn hbtn-s" onclick="goPage('about')">Our Story</button>
+        </div>
+        <div class="hstats">
+          <div><span class="hstat-num" id="cnt1">100+</span><span class="hstat-lbl">Active Players</span></div>
+          <div><span class="hstat-num" id="cnt2">0</span><span class="hstat-lbl">Trophies Won</span></div>
+          <div><span class="hstat-num" id="cnt3">0</span><span class="hstat-lbl">Years Active</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <section class="sec">
+    <div class="container">
+      <span class="sec-label">Latest Updates</span>
+      <h2 class="sec-title">Academy News</h2>
+      <div class="sec-div"></div>
+      <div class="news-grid" id="homeNews"></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="sec progs-sec">
+    <div class="container">
+            <span class="sec-label">Programs We Offer</span>
+      <h2 class="sec-title">Training Pathways</h2>
+      <div class="sec-div"></div>
+      <div class="programs-grid">
+
+        <div class="pcard" id="pcard-junior">
+          <div class="pcard-photo" id="pphoto-0">
+            <img id="pphoto-img-0" src="" alt="">
+            <div class="pcard-photo-overlay"></div>
+            <button class="pcard-photo-edit" id="pphoto-edit-0" onclick="triggerProgramPhoto(0)">&#128247; Change Photo</button>
+          </div>
+          <div class="pcard-inner" onmouseenter="document.getElementById('pphoto-edit-0').style.display='block'" onmouseleave="document.getElementById('pphoto-edit-0').style.display='none'">
+            <div class="pcard-accent"></div>
+            <div class="pcard-tag">&#9917; Ages 6 &#8211; 10</div>
+            <h3>Junior Stars</h3>
+            <p class="pcard-desc">Where every champion begins. Fun, foundational training in a safe and supportive environment.</p>
+            <ul class="pcard-features">
+              <li>Ball control &amp; basic technique</li>
+              <li>Teamwork &amp; sportsmanship</li>
+              <li>Weekend training sessions</li>
+              <li>Small-sided match play</li>
+              <li>Free kit for enrolled players</li>
+            </ul>
+            <button class="pcard-cta" onclick="goPage('contact')">Enroll Now &#8594;</button>
+          </div>
+        </div>
+
+        <div class="pcard" id="pcard-youth">
+          <div class="pcard-photo" id="pphoto-1">
+            <img id="pphoto-img-1" src="" alt="">
+            <div class="pcard-photo-overlay"></div>
+            <button class="pcard-photo-edit" id="pphoto-edit-1" onclick="triggerProgramPhoto(1)">&#128247; Change Photo</button>
+          </div>
+          <div class="pcard-inner" onmouseenter="document.getElementById('pphoto-edit-1').style.display='block'" onmouseleave="document.getElementById('pphoto-edit-1').style.display='none'">
+            <div class="pcard-accent"></div>
+            <div class="pcard-tag">&#127939; Ages 11 &#8211; 14</div>
+            <h3>Youth Elite</h3>
+            <p class="pcard-desc">Serious football for serious players. Tactical training and competitive league experience.</p>
+            <ul class="pcard-features">
+              <li>Advanced tactical training</li>
+              <li>Physical conditioning program</li>
+              <li>Regional league participation</li>
+              <li>Video analysis sessions</li>
+              <li>Individual performance tracking</li>
+            </ul>
+            <button class="pcard-cta" onclick="goPage('contact')">Enroll Now &#8594;</button>
+          </div>
+        </div>
+
+        <div class="pcard" id="pcard-senior">
+          <div class="pcard-photo" id="pphoto-2">
+            <img id="pphoto-img-2" src="" alt="">
+            <div class="pcard-photo-overlay"></div>
+            <button class="pcard-photo-edit" id="pphoto-edit-2" onclick="triggerProgramPhoto(2)">&#128247; Change Photo</button>
+          </div>
+          <div class="pcard-inner" onmouseenter="document.getElementById('pphoto-edit-2').style.display='block'" onmouseleave="document.getElementById('pphoto-edit-2').style.display='none'">
+            <div class="pcard-accent"></div>
+            <div class="pcard-tag">&#127919; Ages 15 &#8211; 17</div>
+            <h3>Senior Academy</h3>
+            <p class="pcard-desc">Elite preparation for the next level. National competitions and professional pathway guidance.</p>
+            <ul class="pcard-features">
+              <li>Pro-grade coaching staff</li>
+              <li>National competition preparation</li>
+              <li>Strength &amp; conditioning</li>
+              <li>Scouting exposure &amp; trials</li>
+              <li>Career development guidance</li>
+            </ul>
+            <button class="pcard-cta" onclick="goPage('contact')">Enroll Now &#8594;</button>
+          </div>
+        </div>
+
+      </div>
+      <div style="margin-top:40px;background:rgba(0,200,83,.05);border:1px solid rgba(0,200,83,.15);border-radius:8px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+        <div>
+          <div style="font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;margin-bottom:4px">Not sure which program is right?</div>
+          <div style="color:var(--mu);font-size:14px">Contact our coaches and we'll find the best fit.</div>
+        </div>
+        <button class="nav-cta" style="font-size:14px;padding:13px 28px" onclick="goPage('contact')">Talk to a Coach</button>
+      </div>    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <section class="sec">
+    <div class="container">
+      <div class="about-layout">
+        <div>
+          <span class="sec-label">Our Story</span>
+          <h2 class="sec-title">Built on Passion,<br>Defined by Excellence</h2>
+          <div class="sec-div"></div>
+          <p style="color:var(--mu);line-height:1.8;margin-bottom:14px">Founded in 2021, Rising Sport Academy was born from a simple belief: every child deserves world-class football education. From a small training ground, we have grown into one of Rwanda's exciting football academies.</p>
+          <p style="color:var(--mu);line-height:1.8">Our coaches bring professional experience, combining modern tactics with fundamentals — discipline, teamwork, resilience, and love for the game.</p>
+          <div class="vals">
+            <div class="vitem"><h4>🏆 Excellence</h4><p>We settle for nothing less than our best.</p></div>
+            <div class="vitem"><h4>🤝 Teamwork</h4><p>Great teams built on trust and respect.</p></div>
+            <div class="vitem"><h4>💪 Discipline</h4><p>Consistent effort separates good from great.</p></div>
+            <div class="vitem"><h4>❤️ Passion</h4><p>Love for the game drives everything we do.</p></div>
+          </div>
+        </div>
+        <div class="about-img" id="aboutImgWrap">
+          <img id="aboutImgEl" src="" alt="" style="display:none">
+          <span id="aboutImgIcon">⚽</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--card);border-top:1px solid var(--b)">
+    <div class="container">
+      <span class="sec-label">The People Behind the Team</span>
+      <h2 class="sec-title">Coaching Staff</h2>
+      <div class="sec-div"></div>
+      <div class="grid-3" id="staffGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="page" id="page-achievements">
+  <div class="ach-banner">
+    <div class="container">
+      <span class="sec-label">Our Pride</span>
+      <h2 class="sec-title">A Legacy of Winning</h2>
+      <p style="color:var(--mu);max-width:500px;margin-top:10px;line-height:1.7">Trophies, records, and players developed since 2021.</p>
+      <div class="bstats">
+        <div class="bstat"><span id="achPlayers">0</span><p>Active Players</p></div>
+        <div class="bstat"><span>15</span><p>Trophies Won</p></div>
+        <div class="bstat"><span id="achYears">0</span><p>Years Active</p></div>
+      </div>
+    </div>
+  </div>
+  <section class="sec">
+    <div style="padding:0 40px;max-width:1600px;margin:0 auto">
+      <span class="sec-label">Trophy Cabinet</span>
+      <h2 class="sec-title">Honours &amp; Awards</h2>
+      <div class="sec-div"></div>
+      <div class="trophy-grid" id="trophyGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- GALLERY -->
+<div class="page" id="page-gallery">
+  <section class="sec">
+    <div class="container">
+      <span class="sec-label">Our Moments</span>
+      <h2 class="sec-title">Photo Gallery</h2>
+      <div class="sec-div"></div>
+      <div class="filts">
+        <button class="filt active" onclick="filterGal('all',this)">All</button>
+        <button class="filt" onclick="filterGal('training',this)">Training</button>
+        <button class="filt" onclick="filterGal('matches',this)">Matches</button>
+        <button class="filt" onclick="filterGal('events',this)">Events</button>
+      </div>
+      <div class="galgrid" id="galGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lbox" id="lbox" onclick="closeLB(event)">
+  <button class="lbclose" onclick="closeLB()">✕</button>
+  <div id="lbcont" style="max-width:90vw;text-align:center"></div>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <section class="sec">
+    <div class="container">
+      <div class="contact-layout">
+        <div>
+          <span class="sec-label">Get In Touch</span>
+          <h2 class="sec-title">Join the <em style="color:var(--g);font-style:normal">Rising</em> Family</h2>
+          <div class="sec-div"></div>
+          <p style="color:var(--mu);line-height:1.75;margin-bottom:28px">Ready to take your game to the next level? Contact us about enrollment, training schedules, and how to become part of our family.</p>
+          <div class="cinfo-item"><div class="cicon">📍</div><div><span class="clabel">Location</span><span class="cval">Gisozi Sport Complex, Gisozi, Kigali, Rwanda</span></div></div>
+          <div class="cinfo-item"><div class="cicon">📞</div><div><span class="clabel">Phone</span><span class="cval">0782492870</span></div></div>
+          <div class="cinfo-item"><div class="cicon">✉️</div><div><span class="clabel">Email</span><span class="cval">tvfootballtalent@gmail.com</span></div></div>
+          <div class="cinfo-item"><div class="cicon">⏰</div><div><span class="clabel">Training Hours</span><span class="cval">Saturday–Sunday: 2:00 PM – 6:00 PM</span></div></div>
+          <div style="margin-top:28px" class="contact-follow">
+            <div class="follow-bar">
+              <span class="follow-label" style="color:var(--mu)">Follow us on</span>
+              <a class="fsoc ig" id="slink-ig-contact" href="#" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+              <a class="fsoc tt" id="slink-tt-contact" href="#" target="_blank" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+              <a class="fsoc tw" id="slink-tw-contact" href="#" target="_blank" title="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a class="fsoc yt" id="slink-yt-contact" href="#" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="cform-box">
+          <h3>Send Us a Message</h3>
+          <div class="fi"><label>Full Name</label><input class="inp" type="text" id="cf-name" placeholder="Your full name"></div>
+          <div class="fi"><label>Email</label><input class="inp" type="email" id="cf-email" placeholder="your@email.com"></div>
+          <div class="fi"><label>Program Interest</label>
+            <select class="inp" id="cf-prog">
+              <option value="">Select a program</option>
+              <option>Junior Stars (Ages 6–10)</option>
+              <option>Youth Elite (Ages 11–15)</option>
+              <option>Senior Academy (Ages 15–17)</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="fi"><label>Message</label><textarea class="inp" id="cf-msg" rows="4" placeholder="Tell us about yourself..."></textarea></div>
+          <button class="sbtn" onclick="submitContact()">Send Message</button>
+          <div class="alert alert-ok" id="contactOk">✅ Message received! We will contact you shortly.</div>
+          <div class="alert alert-err" id="contactErr">⚠️ Please fill in all fields.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- TEAMS PAGE -->
+<div class="page" id="page-teams" style="display:none">
+<section class="sec"><div class="container">
+<span class="sec-label">Our Squads</span>
+<h2 class="sec-title">Meet the Teams</h2>
+<div class="sec-div"></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<div style="background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden">
+<div style="background:linear-gradient(135deg,#0d2010,#1a4020);padding:28px 20px;text-align:center;position:relative;min-height:100px">
+<img id="tpage-img-0" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:0.5">
+<div style="position:relative;z-index:1;font-size:44px;margin-bottom:8px">&#11088;</div>
+<div style="font-family:'Bebas Neue';font-size:26px;letter-spacing:2px">Junior Stars</div>
+</div>
+<div style="padding:22px">
+<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:inline-block;padding:3px 12px;border-radius:100px;font-size:11px;font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Ages 6-10</div>
+<p style="font-size:13px;color:var(--mu);line-height:1.7;margin-bottom:16px">Our youngest squad where passion for football begins. Fun, foundational training in a safe environment.</p>
+<div style="background:rgba(0,0,0,.3);border-radius:6px;padding:10px;margin-bottom:16px">
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05)"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Saturday</span><span style="color:var(--g);font-weight:600">2:00 - 4:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Sunday</span><span style="color:var(--g);font-weight:600">2:00 - 4:00 PM</span></div>
+</div>
+<button style="width:100%;background:transparent;border:1px solid rgba(0,200,83,.4);color:var(--g);padding:10px;border-radius:4px;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer" onclick="goPage('trials')">Apply Now</button>
+</div></div>
+
+<div style="background:var(--card);border:1px solid rgba(0,200,83,.4);border-radius:10px;overflow:hidden;box-shadow:0 0 30px rgba(0,200,83,.08)">
+<div style="background:linear-gradient(135deg,#003d1a,#009a3e);padding:28px 20px;text-align:center;position:relative;min-height:100px">
+<img id="tpage-img-1" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:0.5">
+<div style="position:absolute;top:10px;right:10px;z-index:1;background:rgba(0,0,0,.5);color:#fff;font-family:'Barlow Condensed';font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:100px">Most Popular</div>
+<div style="font-size:44px;margin-bottom:8px">&#128293;</div>
+<div style="font-family:'Bebas Neue';font-size:26px;letter-spacing:2px">Youth Elite</div>
+</div>
+<div style="padding:22px">
+<div style="background:rgba(0,200,83,.15);border:1px solid rgba(0,200,83,.3);color:var(--g);display:inline-block;padding:3px 12px;border-radius:100px;font-size:11px;font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Ages 11-14</div>
+<p style="font-size:13px;color:var(--mu);line-height:1.7;margin-bottom:16px">Competitive football with tactical depth. Players train for regional leagues and develop professional habits.</p>
+<div style="background:rgba(0,0,0,.3);border-radius:6px;padding:10px;margin-bottom:16px">
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05)"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Saturday</span><span style="color:var(--g);font-weight:600">2:00 - 5:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Sunday</span><span style="color:var(--g);font-weight:600">2:00 - 5:00 PM</span></div>
+</div>
+<button style="width:100%;background:var(--g);border:none;color:#000;padding:10px;border-radius:4px;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:700" onclick="goPage('trials')">Apply Now</button>
+</div></div>
+
+<div style="background:var(--card);border:1px solid var(--b);border-radius:10px;overflow:hidden">
+<div style="background:linear-gradient(135deg,#1a0d00,#3d2000);padding:28px 20px;text-align:center;position:relative;min-height:100px">
+<img id="tpage-img-2" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:0.5">
+<div style="position:relative;z-index:1;font-size:44px;margin-bottom:8px">&#127919;</div>
+<div style="font-family:'Bebas Neue';font-size:26px;letter-spacing:2px">Senior Academy</div>
+</div>
+<div style="padding:22px">
+<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:inline-block;padding:3px 12px;border-radius:100px;font-size:11px;font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">Ages 15-17</div>
+<p style="font-size:13px;color:var(--mu);line-height:1.7;margin-bottom:16px">Elite preparation for the next level. National competitions, scouting exposure and professional pathway guidance.</p>
+<div style="background:rgba(0,0,0,.3);border-radius:6px;padding:10px;margin-bottom:16px">
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05)"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Saturday</span><span style="color:var(--g);font-weight:600">3:00 - 6:00 PM</span></div>
+<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:13px"><span style="color:var(--mu);font-size:11px;font-family:'Barlow Condensed';letter-spacing:1px;text-transform:uppercase">Sunday</span><span style="color:var(--g);font-weight:600">3:00 - 6:00 PM</span></div>
+</div>
+<button style="width:100%;background:transparent;border:1px solid rgba(0,200,83,.4);color:var(--g);padding:10px;border-radius:4px;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer" onclick="goPage('trials')">Apply Now</button>
+</div></div>
+</div>
+</div></section>
+</div>
+
+<!-- NEWS PAGE -->
+<div class="page" id="page-news" style="display:none">
+<section class="sec"><div class="container">
+<span class="sec-label">Latest Updates</span>
+<h2 class="sec-title">Academy News</h2>
+<div class="sec-div"></div>
+<div class="news-grid" id="fullNewsList"></div>
+<div id="newsEmptyState" style="display:none;text-align:center;padding:60px 0;color:var(--mu)">
+<div style="font-size:48px;margin-bottom:16px">&#128240;</div>
+<p>No articles yet. Check back soon.</p>
+</div>
+</div></section>
+</div>
+
+<!-- TRIALS PAGE -->
+<div class="page" id="page-trials" style="display:none">
+<section class="sec"><div class="container" style="max-width:820px">
+<span class="sec-label">Join Rising Sport Academy</span>
+<h2 class="sec-title">Apply for Trials</h2>
+<div class="sec-div"></div>
+<p style="color:var(--mu);line-height:1.8;margin-bottom:40px;font-size:15px">Take the first step toward your football journey. Fill in the form and our coaching staff will contact you within 48 hours. Trials are <strong style="color:var(--g)">FREE</strong>.</p>
+
+<h3 style="font-family:'Bebas Neue';font-size:28px;letter-spacing:2px;margin-bottom:18px">Training Fees</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px">
+<div style="background:var(--card);border:1px solid var(--b);border-radius:8px;padding:22px;text-align:center">
+<div style="font-size:28px;margin-bottom:8px">&#11088;</div>
+<div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Junior Stars</div>
+<div style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Ages 6-10</div>
+<div style="font-family:'Bebas Neue';font-size:24px;color:var(--g);margin-bottom:14px">Contact Us</div>
+<ul style="list-style:none;text-align:left;margin-bottom:18px">
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Weekend sessions</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Kit included</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Certificate</li>
+</ul>
+<button onclick="document.getElementById('trial-program').value='Junior Stars (Ages 6-10)';document.getElementById('trialForm').scrollIntoView({behavior:'smooth'})" style="width:100%;background:transparent;border:1px solid rgba(0,200,83,.4);color:var(--g);padding:8px;border-radius:4px;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer">Apply</button>
+</div>
+<div style="background:var(--card);border:2px solid rgba(0,200,83,.4);border-radius:8px;padding:22px;text-align:center;position:relative">
+<div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--g);color:#000;font-family:'Barlow Condensed';font-size:10px;letter-spacing:2px;padding:3px 12px;border-radius:100px;font-weight:700;white-space:nowrap">Most Popular</div>
+<div style="font-size:28px;margin-bottom:8px">&#128293;</div>
+<div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Youth Elite</div>
+<div style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Ages 11-14</div>
+<div style="font-family:'Bebas Neue';font-size:24px;color:var(--g);margin-bottom:14px">Contact Us</div>
+<ul style="list-style:none;text-align:left;margin-bottom:18px">
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Weekend sessions</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Kit included</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; League matches</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Performance tracking</li>
+</ul>
+<button onclick="document.getElementById('trial-program').value='Youth Elite (Ages 11-14)';document.getElementById('trialForm').scrollIntoView({behavior:'smooth'})" style="width:100%;background:var(--g);border:none;color:#000;padding:8px;border-radius:4px;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:700">Apply</button>
+</div>
+<div style="background:var(--card);border:1px solid var(--b);border-radius:8px;padding:22px;text-align:center">
+<div style="font-size:28px;margin-bottom:8px">&#127919;</div>
+<div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Senior Academy</div>
+<div style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Ages 15-17</div>
+<div style="font-family:'Bebas Neue';font-size:24px;color:var(--g);margin-bottom:14px">Contact Us</div>
+<ul style="list-style:none;text-align:left;margin-bottom:18px">
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; National competitions</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Scouting exposure</li>
+<li style="font-size:12px;color:rgba(255,255,255,.7);padding:4px 0">&#10003; Career guidance</li>
+</ul>
+<button onclick="document.getElementById('trial-program').value='Senior Academy (Ages 15-17)';document.getElementById('trialForm').scrollIntoView({behavior:'smooth'})" style="width:100%;background:transparent;border:1px solid rgba(0,200,83,.4);color:var(--g);padding:8px;border-radius:4px;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer">Apply</button>
+</div>
+</div>
+
+<div id="trialForm" style="background:var(--card);border:1px solid var(--b);border-radius:10px;padding:32px">
+<h3 style="font-family:'Bebas Neue';font-size:26px;letter-spacing:2px;margin-bottom:6px">Registration Form</h3>
+<p style="color:var(--mu);font-size:13px;margin-bottom:22px">Fields marked * are required.</p>
+<div class="arow">
+<div class="fi"><label>Player Full Name *</label><input class="inp" type="text" id="trial-name" placeholder="Full name of the player"></div>
+<div class="fi"><label>Date of Birth *</label><input class="inp" type="date" id="trial-dob"></div>
+</div>
+<div class="arow">
+<div class="fi"><label>Program *</label><select class="inp" id="trial-program"><option value="">Select program</option><option>Junior Stars (Ages 6-10)</option><option>Youth Elite (Ages 11-14)</option><option>Senior Academy (Ages 15-17)</option></select></div>
+<div class="fi"><label>Position</label><select class="inp" id="trial-position"><option value="">Select position</option><option>Goalkeeper</option><option>Defender</option><option>Midfielder</option><option>Forward / Striker</option><option>Not sure yet</option></select></div>
+</div>
+<div class="arow">
+<div class="fi"><label>Parent / Guardian Name *</label><input class="inp" type="text" id="trial-parent" placeholder="Parent or guardian full name"></div>
+<div class="fi"><label>Phone Number *</label><input class="inp" type="tel" id="trial-phone" placeholder="e.g. 0780000000"></div>
+</div>
+<div class="fi"><label>Email Address</label><input class="inp" type="email" id="trial-email" placeholder="your@email.com"></div>
+<div class="fi" style="margin-top:6px"><label>Previous Experience (optional)</label><textarea class="inp" id="trial-exp" rows="3" placeholder="Any previous clubs or training?"></textarea></div>
+<button class="sbtn" style="margin-top:16px;width:100%;font-size:16px;padding:15px" onclick="submitTrial()">Submit Registration</button>
+<div class="alert alert-ok" id="trialOk" style="margin-top:12px">Registration submitted! Our coaches will contact you within 48 hours.</div>
+<div class="alert alert-err" id="trialErr" style="margin-top:12px"></div>
+</div>
+</div></section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="fbrand">Rising Sport <em>Academy</em></div>
+        <p style="color:var(--mu);font-size:13px;line-height:1.7;max-width:280px;margin-bottom:16px">Developing the next generation of football champions since 2021.</p>
+        <div class="footer-follow">
+          <div class="follow-bar">
+            <span class="follow-label">Follow us on</span>
+            <a class="fsoc ig" id="slink-ig-footer" href="#" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a class="fsoc tt" id="slink-tt-footer" href="#" target="_blank" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+            <a class="fsoc tw" id="slink-tw-footer" href="#" target="_blank" title="Twitter / X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a class="fsoc yt" id="slink-yt-footer" href="#" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="ftitle">Navigate</p>
+        <ul class="flinks">
+          <li><a onclick="goPage('home')">Home</a></li><li><a onclick="goPage('about')">About Us</a></li>
+          <li><a onclick="goPage('achievements')">Achievements</a></li><li><a onclick="goPage('gallery')">Gallery</a></li>
+          <li><a onclick="goPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ftitle">Programs</p>
+        <ul class="flinks"><li><a>Junior Stars</a></li><li><a>Youth Elite</a></li><li><a>Senior Academy</a></li></ul>
+      </div>
+    </div>
+    <div class="fcopy">
+      <span>© 2026 Rising Sport Academy. All rights reserved.</span>
+      <span style="color:var(--g)">⚽ Excellence on Every Pitch</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LOGIN -->
+<div class="overlay" id="loginOverlay">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div style="font-size:40px;text-align:center;margin-bottom:12px">🔐</div>
+      <h2 style="font-family:'Bebas Neue';font-size:30px;text-align:center;margin-bottom:4px">Admin Portal</h2>
+      <p style="text-align:center;color:var(--mu);font-size:13px;margin-bottom:22px">Rising Sport Academy</p>
+      <div class="fi"><label>Username</label><input class="inp" type="text" id="loginUser" placeholder="admin" autocomplete="off"></div>
+      <div class="fi"><label>Password</label><input class="inp" type="password" id="loginPass" placeholder="••••••••" autocomplete="new-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="sbtn" onclick="doLogin()">Login</button>
+      <div class="alert alert-err" id="loginErr">❌ Wrong username or password.</div>
+      <button onclick="showForgot()" style="display:block;margin:10px auto 0;background:none;border:none;color:var(--mu);font-size:12px;cursor:pointer;text-decoration:underline">Forgot password?</button>
+      <button onclick="closeLogin()" style="display:block;margin:6px auto 0;background:none;border:none;color:var(--mu);font-size:13px">← Back to Website</button>
+    </div>
+
+    <!-- FORGOT PASSWORD PANEL -->
+    <div class="login-box" id="forgotBox" style="display:none">
+      <div style="font-size:40px;text-align:center;margin-bottom:12px">🔑</div>
+      <h2 style="font-family:'Bebas Neue';font-size:28px;text-align:center;margin-bottom:4px">Reset Password</h2>
+      <p style="text-align:center;color:var(--mu);font-size:13px;margin-bottom:22px">Enter your recovery code to set a new password</p>
+      <div class="fi"><label>Recovery Code</label><input class="inp" type="text" id="recoveryCode" placeholder="Enter your secret code" autocomplete="off"></div>
+      <div class="fi" id="newPassFields" style="display:none">
+        <label>New Password</label><input class="inp" type="password" id="newPassReset" placeholder="Min 6 characters">
+        <label style="margin-top:10px;display:block">Confirm Password</label><input class="inp" type="password" id="newPassConfirm" placeholder="Repeat new password" style="margin-top:6px">
+      </div>
+      <button class="sbtn" style="margin-top:14px" onclick="doRecovery()">Continue</button>
+      <div class="alert alert-err" id="recoveryErr"></div>
+      <div class="alert alert-ok" id="recoveryOk"></div>
+      <button onclick="hideForgot()" style="display:block;margin:8px auto 0;background:none;border:none;color:var(--mu);font-size:13px">← Back to Login</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD -->
+<div class="overlay" id="dashOverlay">
+  <div class="admin-layout">
+    <div class="sidebar">
+      <div class="sb-logo">⚽ RSA Admin</div>
+      <ul class="sb-nav">
+        <li><a onclick="showTab('dashboard')" id="tab-btn-dashboard" class="active">📊 Dashboard</a></li>
+        <li><a onclick="showTab('submissions')" id="tab-btn-submissions">📬 Messages <span id="newSubBadge" class="badge-new" style="display:none">NEW</span></a></li>
+        <li><a onclick="showTab('news')" id="tab-btn-news">📰 News</a></li>
+        <li><a onclick="showTab('hero')" id="tab-btn-hero">🖼️ Hero Photos</a></li>
+        <li><a onclick="showTab('gallery')" id="tab-btn-gallery">🗂️ Gallery</a></li>
+        <li><a onclick="showTab('logo')" id="tab-btn-logo">🎨 Logo</a></li>
+        <li><a onclick="showTab('staff')" id="tab-btn-staff">👥 Staff</a></li>
+        <li><a onclick="showTab('teamsphotos')" id="tab-btn-teamsphotos">⚽ Team Photos</a></li>
+        <li><a onclick="showTab('achievements')" id="tab-btn-achievements">🏆 Achievements</a></li>
+        <li><a onclick="showTab('settings')" id="tab-btn-settings">⚙️ Settings</a></li>
+        <li><button onclick="doLogout()">🚪 Logout</button></li>
+      </ul>
+    </div>
+    <div class="admin-body">
+
+      <!-- DASHBOARD -->
+      <div class="tab-rsa active" id="tab-dashboard">
+        <div class="ahead"><div><h1>Dashboard</h1><small id="dashDate" style="color:var(--mu);font-size:13px"></small></div></div>
+        <div class="acards">
+          <div class="acard"><div class="num" id="dash-news">0</div><p>Articles</p></div>
+          <div class="acard"><div class="num" id="dash-gallery">0</div><p>Photos</p></div>
+          <div class="acard"><div class="num" id="dash-ach">0</div><p>Achievements</p></div>
+          <div class="acard"><div class="num" id="dash-msgs">0</div><p>Messages</p></div>
+        </div>
+        <h2 style="font-family:'Bebas Neue';font-size:22px;margin-bottom:12px">Latest Messages</h2>
+        <div id="dash-latest-msgs" style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px"></div>
+        <h2 style="font-family:'Bebas Neue';font-size:22px;margin-bottom:12px">Recent Articles</h2>
+        <div id="dash-recent" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <!-- SUBMISSIONS -->
+      <div class="tab-rsa" id="tab-submissions">
+        <div class="ahead"><h1>Contact Messages</h1><button class="btn-admin-sm" onclick="markAllRead()">Mark All Read</button></div>
+        <div id="submissionsList"></div>
+      </div>
+
+      <!-- NEWS -->
+      <div class="tab-rsa" id="tab-news">
+        <div class="ahead"><h1>News Manager</h1></div>
+        <div class="aform">
+          <h2>Add New Article / Flier</h2>
+          <div class="arow">
+            <div class="fi"><label>Title</label><input class="inp" type="text" id="news-title" placeholder="e.g. RSA vs Eagles FC — Sunday Match"></div>
+            <div class="fi"><label>Category</label>
+              <select class="inp" id="news-cat">
+                <option>Match Report</option><option>Training Update</option>
+                <option>Player Spotlight</option><option>Academy News</option><option>Tournament</option>
+              </select>
+            </div>
+          </div>
+          <div class="fi" style="margin-top:14px"><label>Content / Description</label><textarea class="inp" id="news-content" rows="4" placeholder="Write details about the match, event or article..."></textarea></div>
+          <div class="fi" style="margin-top:14px">
+            <label>Flier / Cover Image <span style="color:var(--mu);font-weight:400;font-size:12px">(optional — upload a match flier or photo)</span></label>
+            <!-- Image/Flier upload -->
+            <div class="uplzone" id="newsUplZone" style="padding:22px;min-height:unset" onclick="document.getElementById('news-img-input').click()">
+              <input type="file" id="news-img-input" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none" onchange="previewNewsImg(this)">
+              <div id="newsUplIcon" style="font-size:28px;margin-bottom:6px">🖼️</div>
+              <img id="newsImgPrev" style="max-width:100%;max-height:180px;border-radius:6px;display:none;margin-bottom:8px" src="" alt="">
+              <p id="newsUplTxt" style="color:var(--mu);font-size:13px;margin:0">Click to upload a flier or match photo</p>
+              <button id="newsRemoveImg" style="display:none;margin-top:8px;background:rgba(255,59,48,.15);border:1px solid rgba(255,59,48,.3);color:#ff6b6b;padding:5px 14px;border-radius:3px;cursor:pointer;font-size:12px" onclick="event.stopPropagation();removeNewsImg()">Remove Image</button>
+            </div>
+            <!-- Video URL -->
+            <div class="fi" style="margin-top:12px">
+              <label>Video Link <span style="color:var(--mu);font-size:12px;font-weight:400">(YouTube, TikTok, Facebook — paste link)</span></label>
+              <input class="inp" type="url" id="news-video-url" placeholder="https://youtube.com/watch?v=..." style="margin-top:6px">
+            </div>
+          </div>
+          <button class="btn-admin" style="margin-top:14px" onclick="addNews()">Publish</button>
+        </div>
+        <h2 style="font-family:'Bebas Neue';font-size:22px;margin-bottom:12px">Published Articles</h2>
+        <div id="newsList" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <!-- HERO PHOTOS -->
+      <div class="tab-rsa" id="tab-hero">
+        <div class="ahead"><h1>Hero Slideshow Photos</h1></div>
+        <p style="color:var(--mu);font-size:14px;margin-bottom:20px">Upload real photos for each slide. They auto-transition every 5 seconds. Click a slide to upload or change its photo.</p>
+        <div class="hsman">
+          <div class="hsthumb" id="hs-thumb-0" onclick="triggerHeroUpload(0)">
+            <img class="hsthumb-img" id="hs-prev-0" src="" alt="" style="display:none">
+            <span style="font-size:28px">🖼️</span>
+            <span style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:1px">Slide 1 — click to upload</span>
+            <div class="hsthumb-over">
+              <span style="font-size:20px">📷</span>
+              <span style="font-size:12px;font-family:'Barlow Condensed';letter-spacing:1px;color:#fff">Upload / Change</span>
+            </div>
+            <div class="hsthumb-label">Slide 1</div>
+          </div>
+          <div class="hsthumb" id="hs-thumb-1" onclick="triggerHeroUpload(1)">
+            <img class="hsthumb-img" id="hs-prev-1" src="" alt="" style="display:none">
+            <span style="font-size:28px">🖼️</span>
+            <span style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:1px">Slide 2 — click to upload</span>
+            <div class="hsthumb-over">
+              <span style="font-size:20px">📷</span>
+              <span style="font-size:12px;font-family:'Barlow Condensed';letter-spacing:1px;color:#fff">Upload / Change</span>
+            </div>
+            <div class="hsthumb-label">Slide 2</div>
+          </div>
+          <div class="hsthumb" id="hs-thumb-2" onclick="triggerHeroUpload(2)">
+            <img class="hsthumb-img" id="hs-prev-2" src="" alt="" style="display:none">
+            <span style="font-size:28px">🖼️</span>
+            <span style="font-size:11px;color:var(--mu);font-family:'Barlow Condensed';letter-spacing:1px">Slide 3 — click to upload</span>
+            <div class="hsthumb-over">
+              <span style="font-size:20px">📷</span>
+              <span style="font-size:12px;font-family:'Barlow Condensed';letter-spacing:1px;color:#fff">Upload / Change</span>
+            </div>
+            <div class="hsthumb-label">Slide 3</div>
+          </div>
+        </div>
+        <div id="heroRemoveBtns" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px"></div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="tab-rsa" id="tab-gallery">
+        <div class="ahead"><h1>Gallery Manager</h1></div>
+        <div class="fi" style="max-width:260px;margin-bottom:16px"><label>Category</label>
+          <select class="inp" id="gal-cat">
+            <option value="training">Training</option><option value="matches">Matches</option><option value="events">Events</option>
+          </select>
+        </div>
+        <input type="file" id="galUpload" accept="image/*" multiple style="display:none" onchange="uploadGalPhotos(event)">
+        <div class="gman" id="galManage"><button class="addzone" onclick="document.getElementById('galUpload').click()">+</button></div>
+      </div>
+
+      <!-- LOGO -->
+      <div class="tab-rsa" id="tab-logo">
+        <div class="ahead"><h1>Logo &amp; Branding</h1></div>
+        <p style="color:var(--mu);font-size:14px;margin-bottom:18px">Your logo appears in the navigation bar.</p>
+        <input type="file" id="logoUpload" accept="image/*" style="display:none" onchange="uploadLogo(event)">
+        <div class="uplzone" onclick="document.getElementById('logoUpload').click()">
+          <div style="font-size:42px;margin-bottom:10px" id="logoUplIcon">🎨</div>
+          <div id="logoUplPrev" style="display:none;margin-bottom:12px"><img id="logoUplImg" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--g)" src="" alt=""></div>
+          <p id="logoUplTxt" style="color:var(--mu);font-size:14px;margin-bottom:12px">Click to upload your academy logo<br><small>PNG, JPG, SVG · Max 5MB</small></p>
+          <button class="btn-admin" onclick="event.stopPropagation();document.getElementById('logoUpload').click()">Choose File</button>
+        </div>
+        <div id="logoRemoveWrap" style="display:none;margin-top:12px"><button class="delbtn" onclick="removeLogo()">Remove Logo</button></div>
+
+        <!-- ABOUT US PHOTO -->
+        <div style="margin-top:32px;border-top:1px solid var(--b);padding-top:28px">
+          <h2 style="font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;margin-bottom:6px">About Us Photo</h2>
+          <p style="color:var(--mu);font-size:14px;margin-bottom:18px">This image appears on the About Us page next to the academy story.</p>
+          <input type="file" id="aboutPhotoUpload" accept="image/*" style="display:none" onchange="uploadAboutPhoto(event)">
+          <div class="uplzone" onclick="document.getElementById('aboutPhotoUpload').click()">
+            <div style="font-size:42px;margin-bottom:10px" id="aboutUplIcon">⚽</div>
+            <div id="aboutUplPrev" style="display:none;margin-bottom:12px"><img id="aboutUplImg" style="width:120px;height:120px;border-radius:6px;object-fit:cover;border:3px solid var(--g)" src="" alt=""></div>
+            <p id="aboutUplTxt" style="color:var(--mu);font-size:14px;margin-bottom:12px">Click to upload About Us photo<br><small>PNG or JPG recommended</small></p>
+            <button class="btn-admin" onclick="event.stopPropagation();document.getElementById('aboutPhotoUpload').click()">Choose File</button>
+          </div>
+          <div id="aboutRemoveWrap" style="display:none;margin-top:12px"><button class="delbtn" onclick="removeAboutPhoto()">Remove Photo</button></div>
+        </div>
+      </div>
+
+      <!-- STAFF PHOTOS -->
+      <div class="tab-rsa" id="tab-staff">
+        <div class="ahead"><h1>Coaching Staff</h1></div>
+        <!-- ADD STAFF FORM -->
+        <div class="aform" style="margin-bottom:24px">
+          <h2>Add Staff Member</h2>
+          <div class="arow">
+            <div class="fi"><label>Full Name</label><input class="inp" type="text" id="staff-name" placeholder="e.g. John Doe"></div>
+            <div class="fi"><label>Role / Title</label><input class="inp" type="text" id="staff-role" placeholder="e.g. Head Coach"></div>
+          </div>
+          <div class="fi" style="margin-top:10px"><label>Bio <span style="color:var(--mu);font-size:12px;font-weight:400">(optional)</span></label>
+            <input class="inp" type="text" id="staff-bio" placeholder="Short description...">
+          </div>
+          <div class="fi" style="margin-top:10px">
+            <label>Profile Photo <span style="color:var(--mu);font-size:12px;font-weight:400">(optional)</span></label>
+            <div class="uplzone" style="padding:18px;min-height:unset;margin-top:6px" onclick="document.getElementById('staff-photo-input').click()">
+              <input type="file" id="staff-photo-input" accept="image/*" style="display:none" onchange="previewStaffPhoto(this)">
+              <div id="staffUplIcon" style="font-size:26px;margin-bottom:4px">&#128100;</div>
+              <img id="staffPhotoPrev" style="width:70px;height:70px;border-radius:50%;object-fit:cover;display:none;margin:0 auto 8px" src="" alt="">
+              <p id="staffUplTxt" style="color:var(--mu);font-size:13px;margin:0">Click to upload photo</p>
+            </div>
+          </div>
+          <button class="btn-admin" style="margin-top:12px" onclick="addStaff()">Add Staff Member</button>
+        </div>
+        <h2 style="font-family:'Bebas Neue';font-size:20px;margin-bottom:6px">Current Staff</h2>
+        <p style="color:var(--mu);font-size:13px;margin-bottom:14px">Click the circle to change a photo.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px" id="staffAdminGrid"></div>
+      </div>
+
+      <!-- TEAM PHOTOS -->
+      <div class="tab-rsa" id="tab-teamsphotos">
+        <div class="ahead"><h1>Team Category Photos</h1></div>
+        <p style="color:var(--mu);font-size:14px;margin-bottom:22px">Upload a photo for each training category. These appear on the Programs section of the homepage.</p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+
+          <div style="background:var(--card);border:1px solid var(--b);border-radius:8px;padding:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+            <div id="tphoto-prev-0" style="width:120px;height:80px;background:linear-gradient(135deg,#0d2010,#1a4020);border-radius:6px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:36px">
+              <img id="tphoto-img-admin-0" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none">
+              <span id="tphoto-icon-0">&#11088;</span>
+            </div>
+            <div style="flex:1">
+              <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Junior Stars</div>
+              <div style="color:var(--mu);font-size:13px;margin-bottom:12px">Ages 6–10 · Fun foundational training</div>
+              <div style="display:flex;gap:10px">
+                <button class="btn-admin" onclick="triggerTeamPhoto(0)">&#128247; Upload Photo</button>
+                <button class="btn-secondary" onclick="removeTeamPhoto(0)" style="font-size:12px;padding:8px 14px">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--card);border:1px solid rgba(0,200,83,.3);border-radius:8px;padding:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+            <div id="tphoto-prev-1" style="width:120px;height:80px;background:linear-gradient(135deg,#003d1a,#009a3e);border-radius:6px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:36px">
+              <img id="tphoto-img-admin-1" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none">
+              <span id="tphoto-icon-1">&#128293;</span>
+            </div>
+            <div style="flex:1">
+              <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Youth Elite</div>
+              <div style="color:var(--mu);font-size:13px;margin-bottom:12px">Ages 11–14 · Competitive tactical training</div>
+              <div style="display:flex;gap:10px">
+                <button class="btn-admin" onclick="triggerTeamPhoto(1)">&#128247; Upload Photo</button>
+                <button class="btn-secondary" onclick="removeTeamPhoto(1)" style="font-size:12px;padding:8px 14px">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--card);border:1px solid var(--b);border-radius:8px;padding:22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+            <div id="tphoto-prev-2" style="width:120px;height:80px;background:linear-gradient(135deg,#1a0d00,#3d2000);border-radius:6px;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:36px">
+              <img id="tphoto-img-admin-2" src="" alt="" style="width:100%;height:100%;object-fit:cover;display:none">
+              <span id="tphoto-icon-2">&#127919;</span>
+            </div>
+            <div style="flex:1">
+              <div style="font-family:'Bebas Neue';font-size:20px;letter-spacing:2px;margin-bottom:4px">Senior Academy</div>
+              <div style="color:var(--mu);font-size:13px;margin-bottom:12px">Ages 15–17 · Elite national preparation</div>
+              <div style="display:flex;gap:10px">
+                <button class="btn-admin" onclick="triggerTeamPhoto(2)">&#128247; Upload Photo</button>
+                <button class="btn-secondary" onclick="removeTeamPhoto(2)" style="font-size:12px;padding:8px 14px">Remove</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div class="tab-rsa" id="tab-achievements">
+        <div class="ahead"><h1>Achievements</h1></div>
+        <div class="aform">
+          <h2>Add Achievement</h2>
+          <div class="arow">
+            <div class="fi"><label>Year</label><input class="inp" type="number" id="ach-year" placeholder="2025" min="2000" max="2040"></div>
+            <div class="fi"><label>Icon</label><input class="inp" type="text" id="ach-icon" placeholder="🏆" maxlength="2"></div>
+          </div>
+          <div class="fi" style="margin-top:14px"><label>Title</label><input class="inp" type="text" id="ach-title" placeholder="Championship name"></div>
+          <div class="fi" style="margin-top:14px"><label>Description</label><input class="inp" type="text" id="ach-desc" placeholder="Brief description"></div>
+          <button class="btn-admin" style="margin-top:14px" onclick="addAch()">Add Achievement</button>
+        </div>
+        <h2 style="font-family:'Bebas Neue';font-size:22px;margin-bottom:4px">All Achievements</h2>
+        <small style="color:var(--mu);font-size:12px;display:block;margin-bottom:12px">Click the icon to upload a trophy photo</small>
+        <div id="achAdminList" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="tab-rsa" id="tab-settings">
+        <div class="ahead"><h1>Account Settings</h1></div>
+        <div class="settings-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div class="aform">
+            <h2>Change Username</h2>
+            <div class="fi"><label>Current Username</label><input class="inp" type="text" id="s-cur-user" placeholder="Current username"></div>
+            <div class="fi"><label>New Username</label><input class="inp" type="text" id="s-new-user" placeholder="Min 3 characters"></div>
+            <button class="btn-admin" style="margin-top:4px" onclick="changeUsername()">Update Username</button>
+            <div class="alert alert-ok" id="user-ok">✅ Username updated successfully.</div>
+            <div class="alert alert-err" id="user-err"></div>
+          </div>
+          <div class="aform">
+            <h2>Change Password</h2>
+            <div class="fi"><label>Current Password</label><input class="inp" type="password" id="s-cur-pass" placeholder="Current password"></div>
+            <div class="fi"><label>New Password</label><input class="inp" type="password" id="s-new-pass" placeholder="Min 6 characters"></div>
+            <div class="fi"><label>Confirm New Password</label><input class="inp" type="password" id="s-con-pass" placeholder="Repeat new password"></div>
+            <button class="btn-admin" style="margin-top:4px" onclick="changePassword()">Update Password</button>
+            <div class="alert alert-ok" id="pass-ok">✅ Password updated successfully.</div>
+            <div class="alert alert-err" id="pass-err"></div>
+          </div>
+        </div>
+        <div class="aform" style="margin-top:24px">
+          <h2>Recovery Code</h2>
+          <p style="color:var(--mu);font-size:13px;margin-bottom:16px">Set a secret recovery code. If you ever forget your password, enter this code on the login screen to reset it.</p>
+          <div class="fi"><label>Recovery Code</label><input class="inp" type="text" id="s-recovery" placeholder="e.g. RSA-2021-Kigali" autocomplete="off" maxlength="40"></div>
+          <button class="btn-admin" style="margin-top:6px" onclick="saveRecoveryCode()">Save Recovery Code</button>
+          <div class="alert alert-ok" id="recovery-ok">✅ Recovery code saved.</div>
+        </div>
+
+        <div class="aform" style="border-color:rgba(0,200,83,.25);background:rgba(0,200,83,.03)">
+          <h2>&#9729;&#65039; JSONbin Setup</h2>
+          <p style="color:var(--mu);font-size:13px;margin-bottom:14px">Connect JSONbin so your data syncs across all devices.</p>
+          <div style="background:rgba(0,0,0,.3);border-radius:6px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:var(--mu);line-height:1.9">
+            <strong style="color:var(--tx)">How to get keys (free):</strong><br>
+            1. Go to <a href="https://jsonbin.io" target="_blank" style="color:var(--g)">jsonbin.io</a> &#8594; Sign up (free)<br>
+            2. Click <strong>+ Create Bin</strong> &#8594; paste <code>{}</code> &#8594; Save &#8594; copy the <strong>Bin ID</strong><br>
+            3. Go to <strong>API Keys</strong> &#8594; copy your <strong>Master Key</strong>
+          </div>
+          <div class="arow">
+            <div class="fi"><label>JSONbin Bin ID</label><input class="inp" type="text" id="cfg-binid" placeholder="64f3abc..." autocomplete="off"></div>
+            <div class="fi"><label>JSONbin Master Key</label><input class="inp" type="password" id="cfg-masterkey" placeholder="$2a$10$..." autocomplete="off"></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <button class="btn-admin" onclick="saveCloudConfig()">&#128190; Save Config</button>
+            <button class="btn-admin" style="background:var(--mid);color:var(--tx);border:1px solid var(--b)" onclick="testCloudConnection()">&#128268; Test Connection</button>
+          </div>
+          <div class="alert alert-ok" id="cfg-ok"></div>
+          <div class="alert alert-err" id="cfg-err"></div>
+        </div>
+        <div class="aform" style="margin-top:24px;border-color:rgba(220,50,50,.2);background:rgba(220,50,50,.03)">
+          <h2 style="color:#ff6b6b">⚠️ Danger Zone</h2>
+          <p style="color:var(--mu);font-size:13px;margin-bottom:14px">Clears ALL content (news, gallery, achievements, messages). Your credentials will NOT be changed.</p>
+          <button class="delbtn" onclick="resetAll()">Reset All Data</button>
+        </div>
+        <div class="aform" style="margin-top:24px">
+          <h2>Social Media Links</h2>
+          <p style="color:var(--mu);font-size:13px;margin-bottom:16px">Paste your full profile URLs. Leave blank to hide an icon.</p>
+          <div class="fi"><label>Instagram</label><input class="inp" type="url" id="soc-ig" placeholder="https://instagram.com/yourpage"></div>
+          <div class="fi"><label>TikTok</label><input class="inp" type="url" id="soc-tt" placeholder="https://tiktok.com/@yourpage"></div>
+          <div class="fi"><label>Twitter / X</label><input class="inp" type="url" id="soc-tw" placeholder="https://x.com/yourpage"></div>
+          <div class="fi"><label>YouTube</label><input class="inp" type="url" id="soc-yt" placeholder="https://youtube.com/@yourpage"></div>
+          <button class="btn-admin" style="margin-top:8px" onclick="saveSocialLinks()">Save Links</button>
+          <div class="alert alert-ok" id="soc-ok">✅ Social links saved!</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CLOUD CONFIG — JSONbin (data sync)
+============================================================ */
+const CFG_KEY='rsa_cloud_cfg';
+
+// SITE CREDENTIALS — set these once, they work on ALL devices
+// ▼ FILL THESE IN before publishing — all devices will sync automatically — all devices will sync automatically
+const SITE_CFG={
+  jsonbinBin:'',   // Your JSONbin Bin ID  (jsonbin.io)
+  jsonbinKey:''    // Your JSONbin Master Key
+};
+
+function getCloudCfg(){
+  try{
+    var saved=JSON.parse(localStorage.getItem(CFG_KEY)||'{}');
+    return {
+      jsonbinBin: saved.jsonbinBin||SITE_CFG.jsonbinBin,
+      jsonbinKey: saved.jsonbinKey||SITE_CFG.jsonbinKey
+    };
+  }catch(e){return {jsonbinBin:SITE_CFG.jsonbinBin,jsonbinKey:SITE_CFG.jsonbinKey};}
+}
+function saveCloudCfg(c){
+  localStorage.setItem(CFG_KEY,JSON.stringify(c));
+  if(c.jsonbinBin)SITE_CFG.jsonbinBin=c.jsonbinBin;
+  if(c.jsonbinKey)SITE_CFG.jsonbinKey=c.jsonbinKey;
+}
+
+/* ============================================================
+   SAVE INDICATOR
+============================================================ */
+let _saveT=null;
+function showSaveInd(ok,type){
+  let el=document.getElementById('_sInd');
+  if(!el){el=document.createElement('div');el.id='_sInd';
+    el.style.cssText='position:fixed;top:76px;right:20px;padding:8px 18px;border-radius:6px;font-family:Barlow Condensed,sans-serif;font-size:13px;letter-spacing:1px;z-index:9998;background:rgba(10,10,10,.95);border:1px solid rgba(255,255,255,.1);color:#fff;display:flex;align-items:center;gap:8px;transition:opacity .4s';
+    document.body.appendChild(el);}
+  clearTimeout(_saveT);el.style.opacity='1';
+  if(type==='saving'){el.innerHTML='Saving...';el.style.borderColor='rgba(255,255,255,.1)';}
+  else if(ok){el.innerHTML='Saved to cloud';el.style.borderColor='rgba(0,200,83,.4)';_saveT=setTimeout(function(){el.style.opacity='0';},2500);}
+  else{el.innerHTML='Saved locally';el.style.borderColor='rgba(255,200,0,.3)';_saveT=setTimeout(function(){el.style.opacity='0';},2500);}
+}
+
+/* ============================================================
+   JSONBIN — Free cloud database (free.jsonbin.io)
+============================================================ */
+async function jsonbinSave(data){
+  const cfg=getCloudCfg();
+  if(!cfg.jsonbinKey||!cfg.jsonbinBin){
+    localStorage.setItem('rsa_db_local',JSON.stringify(data));
+    showSaveInd(false,'local');return true;
+  }
+  showSaveInd(null,'saving');
+  try{
+    const r=await fetch('https://api.jsonbin.io/v3/b/'+cfg.jsonbinBin,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':cfg.jsonbinKey,'X-Bin-Versioning':'false'},
+      body:JSON.stringify(data)
+    });
+    localStorage.setItem('rsa_db_local',JSON.stringify(data));
+    showSaveInd(r.ok,r.ok?'cloud':'local');return r.ok;
+  }catch(e){
+    localStorage.setItem('rsa_db_local',JSON.stringify(data));
+    showSaveInd(false,'local');return false;
+  }
+}
+async function jsonbinLoad(){
+  const cfg=getCloudCfg();
+  if(!cfg.jsonbinKey||!cfg.jsonbinBin){const l=localStorage.getItem('rsa_db_local');return l?JSON.parse(l):null;}
+  try{
+    const r=await fetch('https://api.jsonbin.io/v3/b/'+cfg.jsonbinBin+'/latest',{headers:{'X-Master-Key':cfg.jsonbinKey}});
+    if(!r.ok)throw new Error('load failed');
+    const d=await r.json();
+    localStorage.setItem('rsa_db_local',JSON.stringify(d.record));
+    return d.record;
+  }catch(e){const l=localStorage.getItem('rsa_db_local');return l?JSON.parse(l):null;}
+}
+
+/* ============================================================
+   IMAGE UPLOAD — local compress & base64
+============================================================ */
+async function compressImage(file,maxDim,quality){
+  maxDim=maxDim||900; quality=quality||0.75;
+  return new Promise(function(resolve,reject){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var img=new Image();
+      img.onload=function(){
+        var w=img.width,ht=img.height,max=maxDim;
+        if(w>max||ht>max){if(w>ht){ht=Math.round(ht*max/w);w=max;}else{w=Math.round(w*max/ht);ht=max;}}
+        var canvas=document.createElement('canvas');
+        canvas.width=w; canvas.height=ht;
+        var ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,w,ht);
+        var q=quality, dataUrl=canvas.toDataURL('image/jpeg',q);
+        // Reduce quality until under 750KB
+        while(dataUrl.length>750000&&q>0.3){q=Math.round((q-0.08)*100)/100; dataUrl=canvas.toDataURL('image/jpeg',q);}
+        // If still too big, shrink dimensions too
+        if(dataUrl.length>900000){
+          w=Math.round(w*0.65); ht=Math.round(ht*0.65);
+          canvas.width=w; canvas.height=ht;
+          ctx.drawImage(img,0,0,w,ht);
+          dataUrl=canvas.toDataURL('image/jpeg',0.60);
+        }
+        resolve(dataUrl);
+      };
+      img.onerror=reject; img.src=e.target.result;
+    };
+    reader.onerror=reject; reader.readAsDataURL(file);
+  });
+}
+async function localUpload(file){
+  if(!file)return null;
+  if(!file.type.startsWith('image/')){alert('Please select an image file.');return null;}
+  if(file.size>26000000){showToast('Compressing large image...');}
+  try{
+    showUploadProg('Processing image...');
+    var base64=await compressImage(file,900,0.75);
+    hideUploadProg();
+    return base64;
+  }catch(e){hideUploadProg();alert('Image processing failed: '+e.message);return null;}
+}
+
+function showUploadProg(msg){
+  var el=document.getElementById('_upP');
+  if(!el){el=document.createElement('div');el.id='_upP';
+    el.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#00C853;color:#000;padding:12px 28px;border-radius:6px;font-family:Barlow Condensed,sans-serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;font-weight:700;z-index:9999;box-shadow:0 4px 20px rgba(0,200,83,.4)';
+    document.body.appendChild(el);}
+  el.textContent=msg;el.style.display='block';
+}
+function hideUploadProg(){var el=document.getElementById('_upP');if(el)el.style.display='none';}
+
+/* ============================================================
+   IMAGE URL STORE
+============================================================ */
+function imgSaveUrl(k,url){if(!DB._images)DB._images={};DB._images[k]=url;}
+function imgLoadUrl(k){
+  if(!k)return null;
+  // If k is already a full URL stored directly
+  if(k.startsWith('http'))return k;
+  if(!DB._images)return null;
+  return DB._images[k]||null;
+}
+function imgDelUrl(k){if(DB._images&&k)delete DB._images[k];}
+async function imgLoad(k){return imgLoadUrl(k);}
+async function imgDel(k){imgDelUrl(k);}
+async function imgSave(k,d){console.warn('imgSave legacy call',k);return false;}
+
+/* ============================================================
+   CLOUD CONFIG UI
+============================================================ */
+function saveCloudConfig(){
+  var bi=(document.getElementById('cfg-binid')||{}).value||'';
+  var mk=(document.getElementById('cfg-masterkey')||{}).value||'';
+  if(!bi||!mk){showAlert('cfg-err','❌ Fill in both JSONbin fields.');return;}
+  saveCloudCfg({jsonbinBin:bi,jsonbinKey:mk});
+  showAlert('cfg-ok','✅ JSONbin config saved! Reload to apply.');
+}
+function loadCloudConfig(){
+  var cfg=getCloudCfg();
+  var bi=document.getElementById('cfg-binid');if(bi)bi.value=cfg.jsonbinBin||'';
+  var mk=document.getElementById('cfg-masterkey');if(mk)mk.value=cfg.jsonbinKey||'';
+}
+async function testCloudConnection(){
+  var cfg=getCloudCfg();
+  if(!cfg.jsonbinBin||!cfg.jsonbinKey){showAlert('cfg-err','❌ Enter JSONbin credentials first.');return;}
+  try{
+    var r=await fetch('https://api.jsonbin.io/v3/b/'+cfg.jsonbinBin+'/latest',{headers:{'X-Master-Key':cfg.jsonbinKey,'X-Bin-Meta':false}});
+    if(r.ok){showAlert('cfg-ok','✅ JSONbin connected successfully!');}
+    else{showAlert('cfg-err','❌ Failed ('+r.status+'). Check your Bin ID and Master Key.');}
+  }catch(e){showAlert('cfg-err','❌ Network error: '+e.message);}
+}
+
+/* ============================================================
+   DATA
+============================================================ */
+const DV=6;
+const DD={
+  credentials:{username:'admin',password:'admin123'},
+  news:[
+    {id:1,title:"U-17 Team Wins Regional Championship!",cat:"Match Report",content:"Our U-17 squad delivered a spectacular performance in the Regional Youth Championship final, winning 3-1 against Amahoro FC.",date:"Feb 15, 2025",emoji:"🏆"},
+    {id:2,title:"New Training Facility Now Open",cat:"Academy News",content:"We are thrilled to announce the opening of our state-of-the-art training facility featuring two full-size pitches, a gym, and video analysis suite.",date:"Feb 8, 2025",emoji:"🏟️"},
+    {id:3,title:"Player Spotlight: Jean-Pierre Habimana",cat:"Player Spotlight",content:"Rising through our youth ranks, Jean-Pierre has just signed his first contract with Rayon Sports FC at just 18 years old.",date:"Jan 28, 2025",emoji:"⭐"},
+  ],
+  gallery:[
+    {id:1,emoji:"⚽",cat:"training",caption:"Morning Training Session",imgKey:null},
+    {id:2,emoji:"🏆",cat:"matches",caption:"Championship Victory",imgKey:null},
+    {id:3,emoji:"🏃",cat:"training",caption:"Sprint Drills",imgKey:null},
+    {id:4,emoji:"🎉",cat:"events",caption:"Award Ceremony",imgKey:null},
+    {id:5,emoji:"⚽",cat:"matches",caption:"Match Day Action",imgKey:null},
+    {id:6,emoji:"👥",cat:"events",caption:"Team Photo 2024",imgKey:null},
+  ],
+  heroSlides:[{idx:0,imgKey:null},{idx:1,imgKey:null},{idx:2,imgKey:null}],
+  achievements:[
+    {id:1,year:"2024",icon:"🏆",title:"National Youth Championship",desc:"U-17 Champions — Kigali Regional League",imgKey:null},
+    {id:2,year:"2023",icon:"🥇",title:"East Africa Cup — Runners Up",desc:"Mixed Division",imgKey:null},
+    {id:3,year:"2023",icon:"🏅",title:"Best Academy Award",desc:"Rwanda Football Federation",imgKey:null},
+    {id:4,year:"2022",icon:"🏆",title:"Youth League Champions",desc:"U-15 Division — Unbeaten season",imgKey:null},
+    {id:5,year:"2022",icon:"⭐",title:"Community Development Award",desc:"Youth outreach and social impact",imgKey:null},
+    {id:6,year:"2021",icon:"🥇",title:"Regional Cup Champions",desc:"Senior Division — Dominant victory",imgKey:null},
+  ],
+  staff:[
+    {id:1,name:"Enock KWIZERA",role:"Head Coach & CEO",emoji:"👨‍🏫",imgKey:null},
+    {id:3,name:"Jean Damour",role:"Fitness Coach",emoji:"🏃",imgKey:null},
+    {id:5,name:"Derick",role:"Secretary",emoji:"📋",imgKey:null},
+  ],
+  logoKey:null,submissions:[],nid:4,gid:7,aid:7,sid:1,_v:DV
+};
+
+
+/* DATA will be set in loadData() */
+
+async function loadData(){
+  try{
+    const raw=await jsonbinLoad();
+    if(!raw)return JSON.parse(JSON.stringify(DD));
+    const s=raw;
+    if(!s._v||s._v<DV){
+      const b=JSON.parse(JSON.stringify(DD));
+      ['news','gallery','achievements','staff','submissions'].forEach(function(k){if(s[k]&&s[k].length)b[k]=s[k];});
+      if(s.heroSlides)b.heroSlides=s.heroSlides;
+      if(s.credentials)b.credentials=s.credentials;
+      if(s.logoKey)b.logoKey=s.logoKey;
+      if(s._images)b._images=s._images;
+      if(s.programPhotos)b.programPhotos=s.programPhotos;
+      if(s.nid)b.nid=s.nid;if(s.gid)b.gid=s.gid;
+      if(s.aid)b.aid=s.aid;if(s.sid)b.sid=s.sid;
+      return b;
+    }
+    const merged=Object.assign(JSON.parse(JSON.stringify(DD)),s);
+    // Always preserve these critical fields from saved data
+    if(s._images)merged._images=s._images;
+    if(s.programPhotos)merged.programPhotos=s.programPhotos;
+    if(s.aboutPhoto)merged.aboutPhoto=s.aboutPhoto;
+    return merged;
+  }catch(e){return JSON.parse(JSON.stringify(DD));}
+}
+async function saveData(){
+  try{DB._v=DV;await jsonbinSave(DB);liveRefresh();}
+  catch(e){console.error('Save failed:',e);}
+}
+function liveRefresh(){
+  try{
+    renderHomeNews&&renderHomeNews();
+    renderGallery&&renderGallery(activeGalFilter);
+    renderTrophies&&renderTrophies();
+    renderStaff&&renderStaff();
+    applySocialLinks&&applySocialLinks();
+    loadAboutImg&&loadAboutImg();
+    applyLogo&&applyLogo();
+    applyHeroPhotos&&applyHeroPhotos();
+    updateAchStats&&updateAchStats();
+    applyProgramPhotos&&applyProgramPhotos();
+  applyTeamPhotos&&applyTeamPhotos();
+  }catch(e){console.warn('liveRefresh:',e);}
+}
+
+/* ============================================================
+   UPLOAD FUNCTIONS
+============================================================ */
+async function uploadLogo(e){
+  const f=e.target.files[0];if(!f)return;
+  const url=await localUpload(f);if(!url)return;
+  imgSaveUrl('logo_main',url);DB.logoKey='logo_main';
+  await saveData();setLogoUI(url);showToast('Logo updated!');
+}
+
+function uploadGalPhotos(e){
+  const cat=document.getElementById('gal-cat').value;
+  const files=Array.from(e.target.files);let done=0;
+  files.forEach(async function(f){
+    const url=await localUpload(f);
+    if(url){const key='gal_'+DB.gid;imgSaveUrl(key,url);
+      DB.gallery.push({id:DB.gid++,imgKey:key,emoji:'📸',cat:cat,caption:f.name.replace(/\.[^.]+$/,'')});}
+    done++;if(done===files.length){await saveData();renderGalManage();renderGallery('all');refreshDash();}
+  });
+  e.target.value='';
+}
+
+function triggerHeroUpload(idx){
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async function(e){
+    const f=e.target.files[0];if(!f)return;
+    if(!DB.heroSlides)DB.heroSlides=[{idx:0,imgKey:null},{idx:1,imgKey:null},{idx:2,imgKey:null}];
+    const url=await localUpload(f);if(!url)return;
+    DB.heroSlides[idx].imgKey=url;
+    await saveData();
+    const img=document.getElementById('hslide-img-'+idx);
+    if(img){img.src=url;img.classList.add('vs');}
+    renderHeroAdmin();
+    renderHeroAdmin();showToast('Slide updated!');
+  };inp.click();
+}
+
+function triggerStaffPhoto(id){
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async function(e){
+    const f=e.target.files[0];if(!f)return;
+    const url=await localUpload(f);if(!url)return;
+    const m=DB.staff.find(function(s){return s.id===id;});if(!m)return;
+    m.imgKey=url;
+    await saveData();renderStaffAdmin();renderStaff();showToast('Photo updated!');
+  };inp.click();
+}
+
+function triggerAchPhoto(id){
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async function(e){
+    const f=e.target.files[0];if(!f)return;
+    const url=await localUpload(f);if(!url)return;
+    const a=DB.achievements.find(function(x){return x.id===id;});if(!a)return;
+    a.imgKey=url;
+    await saveData();renderAchAdmin();renderTrophies();showToast('Photo updated!');
+  };inp.click();
+}
+
+let _newsImgFile=null;
+function previewNewsImg(input){
+  if(!input.files||!input.files[0])return;
+  _newsImgFile=input.files[0];
+  const url=URL.createObjectURL(_newsImgFile);
+  document.getElementById('newsImgPrev').src=url;
+  document.getElementById('newsImgPrev').style.display='block';
+  document.getElementById('newsUplIcon').style.display='none';
+  document.getElementById('newsUplTxt').style.display='none';
+  document.getElementById('newsRemoveImg').style.display='inline-block';
+}
+function removeNewsImg(){
+  _newsImgFile=null;
+  document.getElementById('newsImgPrev').src='';
+  document.getElementById('newsImgPrev').style.display='none';
+  document.getElementById('newsUplIcon').style.display='block';
+  document.getElementById('newsUplTxt').style.display='block';
+  document.getElementById('newsRemoveImg').style.display='none';
+  document.getElementById('news-img-input').value='';
+}
+async function addNews(){
+  const title=document.getElementById('news-title').value.trim();
+  const content=document.getElementById('news-content').value.trim();
+  const cat=document.getElementById('news-cat').value;
+  if(!title||!content){alert('Fill title and content');return;}
+  const vuEl=document.getElementById('news-video-url');
+  const videoUrl=vuEl?vuEl.value.trim():'';
+  const entry={id:DB.nid++,title:title,content:content,cat:cat,emoji:'📰',
+    date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}),
+    imgKey:null,videoUrl:videoUrl||null};
+  if(_newsImgFile){
+    const url=await localUpload(_newsImgFile);
+    if(url){entry.imgKey=url;}
+  }
+  DB.news.unshift(entry);
+  await saveData();
+  document.getElementById('news-title').value='';
+  document.getElementById('news-content').value='';
+  if(vuEl)vuEl.value='';
+  removeNewsImg();
+  renderNewsList();renderHomeNews();refreshDash();
+}
+
+async function uploadAboutPhoto(e){
+  const f=e.target.files[0];if(!f)return;
+  const url=await localUpload(f);if(!url)return;
+  localStorage.setItem('rsa_about_img',url);
+  setAboutImg(url);
+  DB.aboutPhoto=url;
+  await saveData();
+  const prev=document.getElementById('aboutUplPrev');
+  const img=document.getElementById('aboutUplImg');
+  const icon=document.getElementById('aboutUplIcon');
+  const txt=document.getElementById('aboutUplTxt');
+  const rem=document.getElementById('aboutRemoveWrap');
+  if(prev)prev.style.display='block';
+  if(img)img.src=url;
+  if(icon)icon.style.display='none';
+  if(txt)txt.style.display='none';
+  if(rem)rem.style.display='block';
+  showToast('About photo updated!');
+}
+
+/* PROGRAM PHOTOS */
+function triggerProgramPhoto(idx){
+  if(typeof isAuthed==='undefined'||!isAuthed)return;
+  var inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async function(e){
+    var f=e.target.files[0];if(!f)return;
+    var url=await localUpload(f);if(!url)return;
+    if(!DB.programPhotos)DB.programPhotos={};
+    DB.programPhotos[idx]=url;
+    await saveData();applyProgramPhotos();showToast('Program photo updated!');
+  };inp.click();
+}
+function applyProgramPhotos(){
+  if(!DB||!DB.programPhotos)return;
+  Object.keys(DB.programPhotos).forEach(function(idx){
+    var img=document.getElementById('pphoto-img-'+idx);
+    if(img&&DB.programPhotos[idx]){img.src=DB.programPhotos[idx];img.classList.add('vs');}
+  });
+}
+
+
+let DB=JSON.parse(JSON.stringify(DD)),isAuthed=false,activeGalFilter='all';
+
+/* HERO SLIDESHOW */
+const SLIDES=[
+  {title:"Train Hard.<br><em>Rise Higher.</em>",desc:"Where raw talent meets elite coaching. Developing the next generation of champions through discipline, passion, and world-class training."},
+  {title:"Develop Skills.<br><em>Win Together.</em>",desc:"Forging champions on and off the pitch. Join a growing family of dedicated athletes training in the heart of Kigali since 2021."},
+  {title:"One Academy.<br><em>Endless Ambition.</em>",desc:"Your journey to the top starts here. With expert coaches, structured programs, and a winning culture — rise with us."},
+];
+let cur=0,stimer=null,ptimer=null;
+function heroGo(n){
+  const sl=document.querySelectorAll('.hslide'),dt=document.querySelectorAll('.hdot');
+  sl[cur].classList.remove('active');dt[cur].classList.remove('active');
+  cur=(n+sl.length)%sl.length;
+  sl[cur].classList.add('active');dt[cur].classList.add('active');
+  const t=document.getElementById('heroTitle'),d=document.getElementById('heroDesc');
+  if(t){t.style.opacity='0';setTimeout(()=>{t.innerHTML=SLIDES[cur].title;t.style.opacity='1';},350);}
+  if(d){d.style.opacity='0';setTimeout(()=>{d.textContent=SLIDES[cur].desc;d.style.opacity='1';},350);}
+  resetTimer();
+}
+function heroNav(dir){heroGo(cur+dir);}
+const SLIDE_INTERVAL=5000;
+function resetTimer(){
+  clearInterval(stimer);clearInterval(ptimer);
+  // reset progress bar
+  const bar=document.getElementById('heroProgress');
+  if(bar){bar.style.transition='none';bar.style.width='0%';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      bar.style.transition=`width ${SLIDE_INTERVAL}ms linear`;
+      bar.style.width='100%';
+    }));
+  }
+  stimer=setInterval(()=>heroNav(1),SLIDE_INTERVAL);
+}
+
+async function applyHeroPhotos(){
+  if(!DB.heroSlides)return;
+  for(const s of DB.heroSlides){
+    const img=document.getElementById('hslide-img-'+s.idx);
+    if(!img)continue;
+    if(s.imgKey){
+      const src=await imgLoad(s.imgKey);
+      if(src){img.src=src;img.classList.add('vs');}
+    } else {
+      img.src='';img.classList.remove('vs');
+    }
+  }
+}
+
+/* NAV */
+function goPage(p){
+  document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.nl').forEach(e=>e.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const m={home:'nav-home',about:'nav-about',achievements:'nav-ach',gallery:'nav-gal',contact:'nav-con'};
+  const e=document.getElementById(m[p]);if(e)e.classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('navLinks').classList.remove('open');
+  if(p==='home')renderHomeNews();
+  if(p==='gallery')renderGallery('all');
+  if(p==='achievements'){renderTrophies();updateAchStats();}
+  if(p==='about')renderStaff();
+}
+
+/* STATS */
+function updateAchStats(){
+  const y=yearsActive(),pl=calcPlayers();
+  const e1=document.getElementById('achPlayers'),e2=document.getElementById('achYears');
+  if(e1)e1.textContent=pl;if(e2)e2.textContent=y;
+  // keep hero trophy count live
+  const c2=document.getElementById('cnt2');
+  if(c2)c2.textContent=DB.achievements.length;
+}
+function animateCounters(){
+  const y=yearsActive();
+  const trophies=DB.achievements.length;
+  // cnt1 (players) is static 100+ — no animation needed
+  // cnt2 = trophies from DB
+  const el2=document.getElementById('cnt2');
+  if(el2){let v=0;const t=setInterval(()=>{v=Math.min(v+trophies/40,trophies);el2.textContent=Math.floor(v);if(v>=trophies)clearInterval(t);},16);}
+  // cnt3 = years active
+  const el3=document.getElementById('cnt3');
+  if(el3){let v=0;const t=setInterval(()=>{v=Math.min(v+y/40,y);el3.textContent=Math.floor(v);if(v>=y)clearInterval(t);},16);}
+}
+
+/* LOGO */
+function setLogoUI(src){
+  const ni=document.getElementById('navLogoImg');if(ni){ni.src=src;ni.classList.add('vs');}
+  const li=document.getElementById('logoUplImg');if(li)li.src=src;
+  const lp=document.getElementById('logoUplPrev');if(lp)lp.style.display='block';
+  const lic=document.getElementById('logoUplIcon');if(lic)lic.style.display='none';
+  const lt=document.getElementById('logoUplTxt');if(lt)lt.textContent='✅ Logo uploaded! Click to change.';
+  const lrw=document.getElementById('logoRemoveWrap');if(lrw)lrw.style.display='block';
+}
+
+async function renderGalManage(){
+  const parts=await Promise.all(DB.gallery.map(async function(x){
+    const src=x.imgKey?(x.imgKey.startsWith('http')?x.imgKey:await imgLoad(x.imgKey)):null;
+    return '<div class="gthumb">'+(src?'<img src="'+src+'" alt="">':x.emoji)+'<button class="gthumb-del" onclick="delGalItem('+x.id+')">x</button></div>';
+  }));
+  document.getElementById('galManage').innerHTML=parts.join('')+'<button class="addzone" onclick="document.getElementById(\'galUpload\').click()">+</button>';
+}
+async function delGalItem(id){
+  const item=DB.gallery.find(function(x){return x.id===id;});
+  if(item)await imgDel(item.imgKey);
+  DB.gallery=DB.gallery.filter(function(x){return x.id!==id;});
+  await saveData();renderGalManage();renderGallery('all');refreshDash();
+}
+
+/* STAFF ADMIN */
+async function renderStaffAdmin(){
+  const html=await Promise.all(DB.staff.map(async function(s){
+    const photo=await imgLoad(s.imgKey);
+    return '<div class="staff-ac"><div class="photo-upl" onclick="triggerStaffPhoto('+s.id+')">'+(photo?'<img src="'+photo+'" class="vs" alt="">':'')+'<span>'+s.emoji+'</span></div><div><h4>'+s.name+'</h4><span>'+s.role+'</span><small style="color:var(--mu);font-size:11px;display:block;margin-top:4px">Click circle to change photo</small></div></div>';
+  }));
+  document.getElementById('staffAdminGrid').innerHTML=html.join('');
+}
+
+/* RECOVERY CODE */
+function saveRecoveryCode(){
+  const code=document.getElementById('s-recovery').value.trim();
+  if(!code)return;
+  localStorage.setItem('rsa_recovery_code',code);
+  showAlert('recovery-ok');
+}
+function loadRecoveryCode(){
+  const code=localStorage.getItem('rsa_recovery_code')||'';
+  const el=document.getElementById('s-recovery');
+  if(el&&code)el.value=code;
+}
+
+async function changeUsername(){
+  const cur=document.getElementById('s-cur-user').value.trim();
+  const next=document.getElementById('s-new-user').value.trim();
+  hideAlerts('user-ok','user-err');
+  if(!cur||!next)return showAlertMsg('user-err','Fill both fields.');
+  if(cur!==DB.credentials.username)return showAlertMsg('user-err','Current username is incorrect.');
+  if(next.length<3)return showAlertMsg('user-err','Min 3 characters required.');
+  DB.credentials.username=next;await saveData();
+  document.getElementById('s-cur-user').value='';
+  document.getElementById('s-new-user').value='';
+  showAlert('user-ok');
+}
+async function changePassword(){
+  const cur=document.getElementById('s-cur-pass').value;
+  const next=document.getElementById('s-new-pass').value;
+  const conf=document.getElementById('s-con-pass').value;
+  hideAlerts('pass-ok','pass-err');
+  if(!cur||!next||!conf)return showAlertMsg('pass-err','Fill all three fields.');
+  if(cur!==DB.credentials.password)return showAlertMsg('pass-err','Current password is incorrect.');
+  if(next.length<6)return showAlertMsg('pass-err','Min 6 characters required.');
+  if(next!==conf)return showAlertMsg('pass-err','Passwords do not match.');
+  DB.credentials.password=next;await saveData();
+  ['s-cur-pass','s-new-pass','s-con-pass'].forEach(function(id){document.getElementById(id).value='';});
+  showAlert('pass-ok');
+}
+async function resetAll(){
+  if(!confirm('Delete ALL content? Your credentials will NOT change.'))return;
+  const creds=JSON.parse(JSON.stringify(DB.credentials));
+  localStorage.removeItem('rsa_db_local');
+  DB=JSON.parse(JSON.stringify(DD));
+  DB.credentials=creds;
+  await jsonbinSave(DB);
+  location.reload();
+}
+
+/* HELPERS */
+function showAlert(id){const el=document.getElementById(id);if(!el)return;el.style.display='block';setTimeout(function(){el.style.display='none';},4500);}
+function showAlertMsg(id,msg){const el=document.getElementById(id);if(!el)return;el.textContent=msg;showAlert(id);}
+function hideAlerts(){Array.prototype.slice.call(arguments).forEach(function(id){const el=document.getElementById(id);if(el)el.style.display='none';});}
+function escQ(s){return String(s).replace(/'/g,"&#39;");}
+function showToast(msg){const t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.style.transform='translateY(0)';t.style.opacity='1';setTimeout(function(){t.style.transform='translateY(80px)';t.style.opacity='0';},3000);}
+
+/* SOCIAL LINKS */
+function saveSocialLinks(){
+  const links={ig:document.getElementById('soc-ig').value.trim(),tt:document.getElementById('soc-tt').value.trim(),tw:document.getElementById('soc-tw').value.trim(),yt:document.getElementById('soc-yt').value.trim()};
+  localStorage.setItem('rsa_social_links',JSON.stringify(links));
+  applySocialLinks();
+  showAlert('soc-ok');
+}
+function applySocialLinks(){
+  let links={ig:'',tt:'',tw:'',yt:''};
+  try{links=JSON.parse(localStorage.getItem('rsa_social_links')||'{}');}catch(e){}
+  ['ig','tt','tw','yt'].forEach(function(k){const el=document.getElementById('soc-'+k);if(el&&links[k])el.value=links[k];});
+  ['hero','contact','footer'].forEach(function(loc){
+    ['ig','tt','tw','yt'].forEach(function(k){
+      const el=document.getElementById('slink-'+k+'-'+loc);
+      if(!el)return;
+      const url=links[k]||'';
+      el.href=url||'#';
+      el.style.display='flex';
+      el.style.opacity=url?'1':'0.25';
+      el.style.pointerEvents=url?'auto':'none';
+    });
+  });
+}
+
+/* FORGOT PASSWORD */
+function showForgot(){
+  document.querySelector('.login-box').style.display='none';
+  document.getElementById('forgotBox').style.display='block';
+  document.getElementById('recoveryCode').value='';
+  document.getElementById('newPassReset').value='';
+  document.getElementById('newPassConfirm').value='';
+  document.getElementById('newPassFields').style.display='none';
+  hideAlerts('recoveryErr','recoveryOk');
+  document.getElementById('forgotBox').querySelector('.sbtn').textContent='Continue';
+}
+function hideForgot(){
+  document.querySelector('.login-box').style.display='block';
+  document.getElementById('forgotBox').style.display='none';
+}
+let recoveryVerified=false;
+async function doRecovery(){
+  const code=document.getElementById('recoveryCode').value.trim();
+  const stored=localStorage.getItem('rsa_recovery_code')||'';
+  hideAlerts('recoveryErr','recoveryOk');
+  if(!recoveryVerified){
+    if(!stored)return showAlertMsg('recoveryErr','No recovery code set.');
+    if(code!==stored)return showAlertMsg('recoveryErr','Wrong recovery code. Try again.');
+    recoveryVerified=true;
+    document.getElementById('newPassFields').style.display='block';
+    document.getElementById('recoveryCode').disabled=true;
+    document.getElementById('forgotBox').querySelector('.sbtn').textContent='Set New Password';
+  }else{
+    const np=document.getElementById('newPassReset').value;
+    const cp=document.getElementById('newPassConfirm').value;
+    if(!np||!cp)return showAlertMsg('recoveryErr','Fill both password fields.');
+    if(np.length<6)return showAlertMsg('recoveryErr','Password must be at least 6 characters.');
+    if(np!==cp)return showAlertMsg('recoveryErr','Passwords do not match.');
+    DB.credentials.password=np;await saveData();
+    recoveryVerified=false;
+    showAlertMsg('recoveryOk','Password reset! You can now log in.');
+    setTimeout(hideForgot,2000);
+  }
+}
+
+/* LOGO */
+async function applyLogo(){if(DB.logoKey){const s=DB.logoKey.startsWith('http')?DB.logoKey:await imgLoad(DB.logoKey);if(s)setLogoUI(s);}}
+function setLogoUI(src){
+  const ni=document.getElementById('navLogoImg');if(ni){ni.src=src;ni.classList.add('vs');}
+  const lp=document.getElementById('logoUplPrev');if(lp)lp.style.display='block';
+  const li=document.getElementById('logoUplImg');if(li)li.src=src;
+  const lic=document.getElementById('logoUplIcon');if(lic)lic.style.display='none';
+  const lt=document.getElementById('logoUplTxt');if(lt)lt.style.display='none';
+  const lrw=document.getElementById('logoRemoveWrap');if(lrw)lrw.style.display='block';
+}
+async function removeLogo(){
+  imgDelUrl(DB.logoKey);DB.logoKey=null;await saveData();
+  const ni=document.getElementById('navLogoImg');if(ni){ni.src='';ni.classList.remove('vs');}
+  const lp=document.getElementById('logoUplPrev');if(lp)lp.style.display='none';
+  const lic=document.getElementById('logoUplIcon');if(lic)lic.style.display='block';
+  const lt=document.getElementById('logoUplTxt');if(lt)lt.innerHTML='Click to upload your academy logo<br><small>PNG, JPG, SVG</small>';
+  const lrw=document.getElementById('logoRemoveWrap');if(lrw)lrw.style.display='none';
+}
+function removeAboutPhoto(){
+  localStorage.removeItem('rsa_about_img');
+  DB.aboutPhoto=null;
+  const img=document.getElementById('aboutImgEl');if(img){img.src='';img.style.display='none';}
+  const icon=document.getElementById('aboutImgIcon');if(icon)icon.style.display='block';
+  const prev=document.getElementById('aboutUplPrev');if(prev)prev.style.display='none';
+  const icon2=document.getElementById('aboutUplIcon');if(icon2)icon2.style.display='block';
+  const txt=document.getElementById('aboutUplTxt');if(txt)txt.style.display='block';
+  const rem=document.getElementById('aboutRemoveWrap');if(rem)rem.style.display='none';
+  saveData();
+}
+function setAboutImg(src){
+  const img=document.getElementById('aboutImgEl');if(img){img.src=src;img.style.display='block';}
+  const icon=document.getElementById('aboutImgIcon');if(icon)icon.style.display='none';
+}
+function loadAboutImg(){
+  const src=DB.aboutPhoto||localStorage.getItem('rsa_about_img');
+  if(src)setAboutImg(src);
+}
+
+/* HERO */
+async function applyHeroPhotos(){
+  if(!DB.heroSlides)return;
+  DB.heroSlides.forEach(function(s){
+    if(s.imgKey){
+      const src=s.imgKey.startsWith('http')?s.imgKey:imgLoadUrl(s.imgKey);
+      if(src){const img=document.getElementById('hslide-img-'+s.idx);if(img){img.src=src;img.classList.add('vs');}}
+    }
+  });
+}
+async function renderHeroAdmin(){
+  if(!DB.heroSlides)DB.heroSlides=[{idx:0,imgKey:null},{idx:1,imgKey:null},{idx:2,imgKey:null}];
+  const parts=[];
+  const removeBtns=[];
+  DB.heroSlides.forEach(function(s){
+    const thumb=document.getElementById('hs-thumb-'+s.idx);
+    const prev=document.getElementById('hs-prev-'+s.idx);
+    const src=s.imgKey?imgLoadUrl(s.imgKey):null;
+    if(thumb){thumb.style.background=src?'transparent':'';if(src){thumb.innerHTML='<img src="'+src+'" style="width:100%;height:100%;object-fit:cover;border-radius:3px">';}}
+    if(prev&&src){prev.src=src;prev.style.display='block';}
+    if(src)removeBtns.push('<button class="delbtn" onclick="removeHeroSlide('+s.idx+')">Remove Slide '+(s.idx+1)+' Photo</button>');
+  });
+  const rw=document.getElementById('heroRemoveBtns');if(rw)rw.innerHTML=removeBtns.join('');
+}
+async function removeHeroSlide(idx){
+  if(!DB.heroSlides)return;
+  imgDelUrl(DB.heroSlides[idx].imgKey);
+  DB.heroSlides[idx].imgKey=null;await saveData();
+  const img=document.getElementById('hslide-img-'+idx);
+  if(img){img.src='';img.removeAttribute('src');img.classList.remove('vs');}
+  renderHeroAdmin();showToast('Slide removed');
+}
+
+/* ACHIEVEMENTS */
+async function renderAchAdmin(){
+  const html=await Promise.all(DB.achievements.map(async function(a){
+    const p=a.imgKey?(a.imgKey.startsWith('http')?a.imgKey:await imgLoad(a.imgKey)):null;
+    return '<div class="ach-ai"><div class="ach-thumb" onclick="triggerAchPhoto('+a.id+')">'+(p?'<img src="'+p+'" alt="" class="vs">':'')+'<span>'+a.icon+'</span></div><div><h4>'+a.title+'</h4><span>'+a.year+'</span><br><small>'+a.desc+'</small></div><button class="delbtn" onclick="delAch('+a.id+')">Delete</button></div>';
+  }));
+  document.getElementById('achAdminList').innerHTML=html.join('')||'<p style="color:var(--mu)">No achievements yet.</p>';
+}
+async function addAch(){
+  const icon=document.getElementById('ach-icon').value||'🏆';
+  const year=document.getElementById('ach-year').value.trim();
+  const title=document.getElementById('ach-title').value.trim();
+  const desc=document.getElementById('ach-desc').value.trim();
+  if(!year||!title){alert('Fill year and title');return;}
+  DB.achievements.unshift({id:DB.aid++,icon:icon,year:year,title:title,desc:desc,imgKey:null});
+  await saveData();
+  ['ach-icon','ach-year','ach-title','ach-desc'].forEach(function(id){const el=document.getElementById(id);if(el)el.value='';});
+  renderAchAdmin();renderTrophies();refreshDash();updateAchStats();
+}
+async function delAch(id){
+  if(!confirm('Delete?'))return;
+  const a=DB.achievements.find(function(x){return x.id===id;});
+  if(a&&a.imgKey)imgDelUrl(a.imgKey);
+  DB.achievements=DB.achievements.filter(function(a){return a.id!==id;});
+  await saveData();renderAchAdmin();renderTrophies();refreshDash();updateAchStats();
+}
+
+/* GALLERY RENDER */
+async function filterGal(cat,btn){
+  document.querySelectorAll('.filt').forEach(function(b){b.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  renderGallery(cat);
+}
+async function renderGallery(filter){
+  activeGalFilter=filter||'all';
+  const items=activeGalFilter==='all'?DB.gallery:DB.gallery.filter(function(x){return x.cat===activeGalFilter;});
+  const html=await Promise.all(items.map(async function(x){
+    const src=x.imgKey?(x.imgKey.startsWith('http')?x.imgKey:await imgLoad(x.imgKey)):null;
+    return '<div class="gitem" onclick="openLB(\''+x.emoji+'\',\''+escQ(x.caption)+'\',\''+(src||'')+'\')">'+( src?'<img src="'+src+'" alt="">':x.emoji)+'<div class="gover">&#128269;</div></div>';
+  }));
+  document.getElementById('galGrid').innerHTML=html.join('');
+  document.querySelectorAll('.filt').forEach(function(b){b.classList.toggle('active',b.textContent.toLowerCase().trim()===activeGalFilter||( activeGalFilter==='all'&&b.textContent.toLowerCase().trim()==='all'));});
+}
+
+/* TROPHIES */
+async function renderTrophies(){
+  const html=await Promise.all(DB.achievements.map(async function(a){
+    const p=a.imgKey?(a.imgKey.startsWith('http')?a.imgKey:await imgLoad(a.imgKey)):null;
+    return '<div class="tcard"><div class="tcard-img"><img class="'+(p?'vs':'')+'" src="'+(p||'')+'" alt="'+a.title+'"><span>'+(a.icon||'🏆')+'</span></div><div class="tcard-overlay"></div><div class="tcbody"><div class="tyear">'+a.year+'</div><h5>'+a.title+'</h5></div></div>';
+  }));
+  document.getElementById('trophyGrid').innerHTML=html.join('');
+}
+
+/* STAFF */
+async function renderStaff(){
+  const html=await Promise.all(DB.staff.map(async function(s){
+    const photo=s.imgKey?(s.imgKey.startsWith('http')?s.imgKey:await imgLoad(s.imgKey)):null;
+    return '<div class="scard">'+(photo?'<img src="'+photo+'" alt="'+s.name+'" class="scard-img">':'<div class="scard-img-placeholder">'+s.emoji+'</div>')+'<div class="scard-body"><h4>'+s.name+'</h4><p>'+s.role+'</p></div></div>';
+  }));
+  const grid=document.getElementById('staffGrid');if(grid)grid.innerHTML=html.join('');
+}
+
+/* NEWS */
+async function renderHomeNews(){
+  const items=await Promise.all(DB.news.slice(0,3).map(async function(n){
+    const media=n.imgKey?(n.imgKey.startsWith('http')?n.imgKey:await imgLoad(n.imgKey)):null;
+    const embedUrl=n.videoUrl?getEmbedUrl(n.videoUrl):null;
+    return '<div class="news-card"><div class="nthumb">'+(embedUrl?'<iframe style="position:absolute;inset:0;width:100%;height:100%;border:none" src="'+embedUrl+'" allowfullscreen></iframe><span style="display:none"></span>':'<img class="'+(media?'vs':'')+'" src="'+(media||'')+'" alt="'+n.title+'"><span>'+(n.emoji||'📰')+'</span>')+'</div><div class="nbody"><h5 class="ncard-title">'+n.title+'</h5><p class="ncard-text">'+n.content.substring(0,120)+'...</p><div class="nmeta">'+n.cat+'</div></div></div>';
+  }));
+  const el=document.getElementById('homeNews');if(el)el.innerHTML=items.join('');
+}
+async function renderNewsList(){
+  const items=await Promise.all(DB.news.map(async function(n){
+    const img=n.imgKey?await imgLoad(n.imgKey):null;
+    return '<div class="aitem" style="align-items:flex-start;gap:12px">'+(img?'<img src="'+img+'" style="width:56px;height:56px;object-fit:cover;border-radius:4px;flex-shrink:0" alt="">':'<div style="width:56px;height:56px;background:var(--card);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📰</div>')+'<div style="flex:1;min-width:0"><h4 style="margin:0 0 3px">'+n.title+'</h4><span style="color:var(--mu);font-size:12px">'+n.cat+' · '+n.date+'</span></div><button class="delbtn" onclick="delNews('+n.id+')">Delete</button></div>';
+  }));
+  const el=document.getElementById('newsList');if(el)el.innerHTML=items.join('')||'<p style="color:var(--mu)">No articles yet.</p>';
+}
+async function delNews(id){
+  if(!confirm('Delete?'))return;
+  const n=DB.news.find(function(x){return x.id===id;});
+  if(n&&n.imgKey)imgDelUrl(n.imgKey);
+  DB.news=DB.news.filter(function(n){return n.id!==id;});
+  await saveData();renderNewsList();renderHomeNews();refreshDash();
+}
+
+/* VIDEO EMBED */
+function getEmbedUrl(url){
+  if(!url)return null;
+  try{
+    const yt=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+    if(yt)return 'https://www.youtube.com/embed/'+yt[1];
+    const yts=url.match(/youtube\.com\/shorts\/([^?&\s]+)/);
+    if(yts)return 'https://www.youtube.com/embed/'+yts[1];
+    if(url.includes('facebook.com'))return 'https://www.facebook.com/plugins/video.php?href='+encodeURIComponent(url)+'&show_text=false';
+    return url;
+  }catch(e){return null;}
+}
+
+/* SUBMISSIONS */
+function renderSubmissions(){
+  const el=document.getElementById('submissionsList');if(!el)return;
+  if(!DB.submissions||!DB.submissions.length){el.innerHTML='<p style="color:var(--mu)">No messages yet.</p>';return;}
+  el.innerHTML=DB.submissions.map(function(s){
+    var prog=s.prog||s.program||'';var msg=s.msg||s.experience||s.message||'';
+    return '<div class="aitem"><div><h4>'+s.name+'</h4><small style="color:var(--mu)">'+s.email+' | '+prog+'</small>'+(msg?'<p style="margin:6px 0 0;font-size:13px;color:var(--mu)">'+msg+'</p>':'')+'<small style="color:var(--mu);display:block;margin-top:4px">'+s.date+'</small></div><button class="delbtn" onclick="delSub('+s.id+')">Delete</button></div>';
+  }).join('');
+}
+async function delSub(id){if(!confirm('Delete?'))return;DB.submissions=DB.submissions.filter(function(s){return s.id!==id;});await saveData();renderSubmissions();}
+
+/* CONTACT FORM */
+async function submitContact(){
+  const name=document.getElementById('cf-name').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const prog=document.getElementById('cf-prog').value;
+  const msg=document.getElementById('cf-msg').value.trim();
+  hideAlerts('cf-ok','cf-err');
+  if(!name||!email||!msg){showAlertMsg('cf-err','Please fill all fields.');return;}
+  DB.submissions.unshift({id:DB.sid++,name:name,email:email,prog:prog,msg:msg,date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})});
+  await saveData();
+  ['cf-name','cf-email','cf-msg'].forEach(function(id){document.getElementById(id).value='';});
+  showAlert('cf-ok');
+  updateNewSubBadge();refreshDash();
+}
+
+/* DASHBOARD */
+function refreshDash(){
+  const s1=document.getElementById('dash-news');if(s1)s1.textContent=DB.news.length;
+  const s2=document.getElementById('dash-gallery');if(s2)s2.textContent=DB.gallery.length;
+  const s3=document.getElementById('dash-ach');if(s3)s3.textContent=DB.achievements.length;
+  const s4=document.getElementById('dash-msgs');if(s4)s4.textContent=DB.submissions.length;
+}
+function updateNewSubBadge(){
+  const b=document.getElementById('newSubBadge');if(b)b.style.display=(DB.submissions&&DB.submissions.length)?'inline':'none';
+}
+function updateAchStats(){
+  const y=new Date().getFullYear()-2021;
+  const e1=document.getElementById('achPlayers'),e2=document.getElementById('achYears');
+  if(e1)e1.textContent=100;if(e2)e2.textContent=y;
+  const c2=document.getElementById('cnt2');if(c2)c2.textContent=DB.achievements.length;
+}
+function animateCounters(){
+  const y=new Date().getFullYear()-2021;
+  const trophies=DB.achievements.length;
+  const el1=document.getElementById('cnt1');if(el1)el1.textContent='100+';
+  const el2=document.getElementById('cnt2');
+  if(el2){let v=0;const t=setInterval(function(){v=Math.min(v+1,trophies);el2.textContent=v;if(v>=trophies)clearInterval(t);},80);}
+  const el3=document.getElementById('cnt3');
+  if(el3){let v=0;const t=setInterval(function(){v=Math.min(v+1,y);el3.textContent=v;if(v>=y)clearInterval(t);},150);}
+}
+
+/* GALLERY LIGHTBOX */
+function openLB(emoji,caption,src){
+  const ov=document.getElementById('lbOverlay');
+  const img=document.getElementById('lbImg');
+  const cap=document.getElementById('lbCaption');
+  if(!ov)return;
+  if(src&&src!==''){img.src=src;img.style.display='block';}else{img.style.display='none';}
+  if(cap)cap.textContent=caption||emoji;
+  ov.style.display='flex';
+}
+function closeLB(){const ov=document.getElementById('lbOverlay');if(ov)ov.style.display='none';}
+
+/* NAV + PAGES */
+let _curPage='home';
+function goPage(p){
+  document.querySelectorAll('.page').forEach(function(el){el.style.display='none';});
+  const pg=document.getElementById('page-'+p);if(pg)pg.style.display='block';
+  document.querySelectorAll('.nl').forEach(function(el){el.classList.remove('active');});
+  const navMap={home:'nav-home',about:'nav-about',teams:'nav-teams',news:'nav-news',achievements:'nav-ach',gallery:'nav-gal',contact:'nav-con',trials:'nav-con'};
+  const nb=document.getElementById(navMap[p]);if(nb)nb.classList.add('active');
+  window.scrollTo(0,0);_curPage=p;
+  if(p==='home')renderHomeNews();
+  if(p==='news')renderFullNews();
+  if(p==='gallery')renderGallery(activeGalFilter);
+  if(p==='achievements'){renderTrophies();updateAchStats();}
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+/* LOGIN */
+function doLogin(){
+  const u=document.getElementById('loginUser').value.trim();
+  const p=document.getElementById('loginPass').value;
+  if(u===DB.credentials.username&&p===DB.credentials.password){
+    isAuthed=true;
+    document.getElementById('loginOverlay').classList.remove('open');
+    openDash();
+  }else{
+    showAlertMsg('loginErr','Wrong username or password.');
+  }
+}
+function closeLogin(){document.getElementById('loginOverlay').classList.remove('open');}
+function openAdmin(){if(isAuthed)openDash();else document.getElementById('loginOverlay').classList.add('open');}
+function openDash(){
+  document.getElementById('dashOverlay').classList.add('open');
+  showTab('dashboard');
+  refreshDash();renderNewsList();renderGalManage();renderStaffAdmin();renderAchAdmin();renderSubmissions();updateNewSubBadge();renderHeroAdmin();loadCloudConfig();loadRecoveryCode();applySocialLinks();loadTeamPhotosAdmin();
+}
+function doLogout(){
+  isAuthed=false;
+  document.getElementById('dashOverlay').classList.remove('open');
+  var u=document.getElementById('loginUser');if(u)u.value='';
+  var p=document.getElementById('loginPass');if(p)p.value='';
+  hideAlerts('loginErr');
+}
+function closeAdmin(){document.getElementById('dashOverlay').classList.remove('open');}
+function showTab(name){
+  document.querySelectorAll('.tab-rsa').forEach(function(t){t.classList.remove('active');t.style.display='none';});
+  document.querySelectorAll('.sb-nav a').forEach(function(a){a.classList.remove('active');});
+  const el=document.getElementById('tab-'+name);if(el){el.classList.add('active');el.style.display='block';}
+  const btn=document.getElementById('tab-btn-'+name);if(btn)btn.classList.add('active');
+}
+
+/* TEAM CATEGORY PHOTOS */
+function triggerTeamPhoto(idx){
+  var inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async function(e){
+    var f=e.target.files[0];if(!f)return;
+    var url=await localUpload(f);if(!url)return;
+    if(!DB.programPhotos)DB.programPhotos={};
+    DB.programPhotos[idx]=url;
+    await saveData();
+    applyTeamPhotos();loadTeamPhotosAdmin();
+    showToast('Team photo updated!');
+  };inp.click();
+}
+function removeTeamPhoto(idx){
+  if(!DB.programPhotos)return;
+  delete DB.programPhotos[idx];
+  saveData();applyTeamPhotos();loadTeamPhotosAdmin();showToast('Photo removed');
+}
+function applyTeamPhotos(){
+  if(!DB||!DB.programPhotos)return;
+  [0,1,2].forEach(function(idx){
+    var url=DB.programPhotos[idx];
+    var img=document.getElementById('pphoto-img-'+idx);
+    if(img){if(url){img.src=url;img.classList.add('vs');}else{img.src='';img.classList.remove('vs');}}
+    var timg=document.getElementById('tpage-img-'+idx);
+    if(timg){if(url){timg.src=url;timg.style.display='block';}else{timg.style.display='none';}}
+  });
+}
+function loadTeamPhotosAdmin(){
+  if(!DB||!DB.programPhotos)return;
+  [0,1,2].forEach(function(idx){
+    var url=DB.programPhotos[idx];
+    var img=document.getElementById('tphoto-img-admin-'+idx);
+    var icon=document.getElementById('tphoto-icon-'+idx);
+    if(img)if(url){img.src=url;img.style.display='block';}else{img.style.display='none';}
+    if(icon)icon.style.display=url?'none':'block';
+  });
+}
+
+/* STAFF ADD (new in this version) */
+let _staffPhotoFile=null;
+function previewStaffPhoto(input){
+  if(!input.files||!input.files[0])return;
+  _staffPhotoFile=input.files[0];
+  const url=URL.createObjectURL(_staffPhotoFile);
+  document.getElementById('staffPhotoPrev').src=url;
+  document.getElementById('staffPhotoPrev').style.display='block';
+  document.getElementById('staffUplIcon').style.display='none';
+  document.getElementById('staffUplTxt').textContent='Photo selected';
+}
+async function addStaff(){
+  const name=document.getElementById('staff-name').value.trim();
+  const role=document.getElementById('staff-role').value.trim();
+  const bio=document.getElementById('staff-bio').value.trim();
+  if(!name||!role){alert('Please enter name and role.');return;}
+  const s={id:DB.sid++,name:name,role:role,bio:bio,emoji:'👤',imgKey:null};
+  if(_staffPhotoFile){
+    const url=await localUpload(_staffPhotoFile);
+    if(url){const key='staff_'+s.id;imgSaveUrl(key,url);s.imgKey=key;}
+  }
+  DB.staff.push(s);
+  await saveData();
+  document.getElementById('staff-name').value='';document.getElementById('staff-role').value='';document.getElementById('staff-bio').value='';
+  document.getElementById('staffPhotoPrev').style.display='none';document.getElementById('staffUplIcon').style.display='block';
+  document.getElementById('staff-photo-input').value='';_staffPhotoFile=null;
+  renderStaffAdmin();renderStaff();refreshDash();showToast('Staff member added!');
+}
+async function delStaff(id){
+  if(!confirm('Remove this staff member?'))return;
+  const s=DB.staff.find(function(x){return x.id===id;});
+  if(s&&s.imgKey)imgDelUrl(s.imgKey);
+  DB.staff=DB.staff.filter(function(x){return x.id!==id;});
+  await saveData();renderStaffAdmin();renderStaff();showToast('Staff member removed.');
+}
+
+
+async function renderFullNews(){
+  var el=document.getElementById('fullNewsList');
+  var em=document.getElementById('newsEmptyState');
+  if(!DB.news||!DB.news.length){if(el)el.innerHTML='';if(em)em.style.display='block';return;}
+  if(em)em.style.display='none';
+  var items=await Promise.all(DB.news.map(async function(n){
+    var media=n.imgKey?await imgLoad(n.imgKey):null;
+    var embedUrl=n.videoUrl?getEmbedUrl(n.videoUrl):null;
+    return '<div class="news-card"><div class="nthumb">'+(embedUrl?'<iframe style="position:absolute;inset:0;width:100%;height:100%;border:none" src="'+embedUrl+'" allowfullscreen></iframe><span style="display:none"></span>':'<img class="'+(media?'vs':'')+'" src="'+(media||'')+'" alt="'+n.title+'"><span>'+(n.emoji||'&#128240;')+'</span>')+'</div><div class="nbody"><h5 class="ncard-title">'+n.title+'</h5><p class="ncard-text">'+n.content+'</p><div class="nmeta">'+n.cat+' &middot; '+n.date+'</div></div></div>';
+  }));
+  if(el)el.innerHTML=items.join('');
+}
+async function submitTrial(){
+  var name=document.getElementById('trial-name').value.trim();
+  var dob=document.getElementById('trial-dob').value;
+  var prog=document.getElementById('trial-program').value;
+  var parent=document.getElementById('trial-parent').value.trim();
+  var phone=document.getElementById('trial-phone').value.trim();
+  hideAlerts('trialOk','trialErr');
+  if(!name||!dob||!prog||!parent||!phone){showAlertMsg('trialErr','Please fill all required fields.');return;}
+  var entry={id:DB.sid++,type:'trial',name:name,dob:dob,program:prog,
+    position:document.getElementById('trial-position').value,
+    parent:parent,phone:phone,
+    email:document.getElementById('trial-email').value.trim(),
+    experience:document.getElementById('trial-exp').value.trim(),
+    date:new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})};
+  if(!DB.submissions)DB.submissions=[];
+  DB.submissions.unshift(entry);
+  await saveData();
+  ['trial-name','trial-dob','trial-parent','trial-phone','trial-email','trial-exp'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('trial-program').value='';
+  document.getElementById('trial-position').value='';
+  showAlert('trialOk');
+  if(refreshDash)refreshDash();
+}
+
+window.addEventListener('hashchange',function(){if(location.hash==='#admin'){history.replaceState(null,'',location.pathname);openAdmin();}});
+
+window.addEventListener('load',async function(){
+  const _adm=location.hash==='#admin';
+  if(_adm)history.replaceState(null,'',location.pathname);
+  DB=await loadData();
+  // Apply all persisted content immediately after DB loads
+  await applyLogo();
+  await applyHeroPhotos();
+  resetSlideTimer();
+  loadAboutImg();
+  applySocialLinks();
+  applyTeamPhotos();
+  applyProgramPhotos&&applyProgramPhotos();
+  await renderHomeNews();
+  await renderGallery('all');
+  await renderTrophies();
+  await renderStaff();
+  animateCounters();
+  if(_adm)openAdmin();
+});
+
+</script>
+<a href="https://wa.me/250782492870?text=Hello%20Rising%20Sport%20Academy" target="_blank" title="Chat on WhatsApp" style="position:fixed;bottom:28px;right:28px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);text-decoration:none;transition:transform .3s" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  <svg viewBox="0 0 24 24" style="width:32px;height:32px;fill:#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- TOAST -->
+<div id="toast" style="position:fixed;bottom:90px;right:24px;background:var(--g);color:#000;padding:12px 22px;border-radius:6px;font-weight:700;font-size:14px;transform:translateY(80px);opacity:0;transition:.4s;z-index:9990">-</div>
+
+<!-- LIGHTBOX -->
+<div id="lbOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9000;align-items:center;justify-content:center;flex-direction:column" onclick="closeLB()">
+  <img id="lbImg" src="" alt="" style="max-width:90vw;max-height:80vh;object-fit:contain;border-radius:4px">
+  <div id="lbCaption" style="color:rgba(255,255,255,.7);font-size:14px;margin-top:16px;font-family:'Barlow Condensed';letter-spacing:2px"></div>
+  <button onclick="closeLB()" style="position:fixed;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer">&#x2715;</button>
+</div>
+
+</body>
+</html>
