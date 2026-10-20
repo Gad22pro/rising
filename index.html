@@ -1729,6 +1729,8 @@ function goPage(p){
 }
 
 /* STATS */
+function yearsActive(){return new Date().getFullYear()-2021;}
+function calcPlayers(){return 100;}
 function updateAchStats(){
   const y=yearsActive(),pl=calcPlayers();
   const e1=document.getElementById('achPlayers'),e2=document.getElementById('achYears');
@@ -1737,17 +1739,7 @@ function updateAchStats(){
   const c2=document.getElementById('cnt2');
   if(c2)c2.textContent=DB.achievements.length;
 }
-function animateCounters(){
-  const y=yearsActive();
-  const trophies=DB.achievements.length;
-  // cnt1 (players) is static 100+ — no animation needed
-  // cnt2 = trophies from DB
-  const el2=document.getElementById('cnt2');
-  if(el2){let v=0;const t=setInterval(()=>{v=Math.min(v+trophies/40,trophies);el2.textContent=Math.floor(v);if(v>=trophies)clearInterval(t);},16);}
-  // cnt3 = years active
-  const el3=document.getElementById('cnt3');
-  if(el3){let v=0;const t=setInterval(()=>{v=Math.min(v+y/40,y);el3.textContent=Math.floor(v);if(v>=y)clearInterval(t);},16);}
-}
+
 
 /* LOGO */
 function setLogoUI(src){
@@ -2110,7 +2102,7 @@ function updateNewSubBadge(){
 function updateAchStats(){
   const y=new Date().getFullYear()-2021;
   const e1=document.getElementById('achPlayers'),e2=document.getElementById('achYears');
-  if(e1)e1.textContent=100;if(e2)e2.textContent=y;
+  if(e1)e1.textContent=calcPlayers();if(e2)e2.textContent=yearsActive();
   const c2=document.getElementById('cnt2');if(c2)c2.textContent=DB.achievements.length;
 }
 function animateCounters(){
