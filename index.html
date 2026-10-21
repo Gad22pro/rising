@@ -486,7 +486,7 @@ footer{background:#070707;border-top:1px solid var(--b);padding:52px 0 24px}
         <div class="hstats">
           <div><span class="hstat-num" id="cnt1">100+</span><span class="hstat-lbl">Active Players</span></div>
           <div><span class="hstat-num" id="cnt2">0</span><span class="hstat-lbl">Trophies Won</span></div>
-          <div><span class="hstat-num" id="cnt3">0</span><span class="hstat-lbl">Years Active</span></div>
+          <div><span class="hstat-num" id="cnt3">5</span><span class="hstat-lbl">Years Active</span></div>
         </div>
       </div>
     </div>
@@ -632,7 +632,7 @@ footer{background:#070707;border-top:1px solid var(--b);padding:52px 0 24px}
       <div class="bstats">
         <div class="bstat"><span id="achPlayers">0</span><p>Active Players</p></div>
         <div class="bstat"><span>15</span><p>Trophies Won</p></div>
-        <div class="bstat"><span id="achYears">0</span><p>Years Active</p></div>
+        <div class="bstat"><span id="achYears">5</span><p>Years Active</p></div>
       </div>
     </div>
   </div>
@@ -1419,9 +1419,9 @@ async function imgSave(k,d){console.warn('imgSave legacy call',k);return false;}
 function saveCloudConfig(){
   var bi=(document.getElementById('cfg-binid')||{}).value||'';
   var mk=(document.getElementById('cfg-masterkey')||{}).value||'';
-  if(!bi||!mk){showAlert('cfg-err','❌ Fill in both JSONbin fields.');return;}
+  if(!bi||!mk){showAlertMsg('cfg-err','❌ Fill in both JSONbin fields.');return;}
   saveCloudCfg({jsonbinBin:bi,jsonbinKey:mk});
-  showAlert('cfg-ok','✅ JSONbin config saved! Reload to apply.');
+  showAlertMsg('cfg-ok','✅ Config saved! Now click Test Connection to verify.');
 }
 function loadCloudConfig(){
   var cfg=getCloudCfg();
@@ -1430,12 +1430,20 @@ function loadCloudConfig(){
 }
 async function testCloudConnection(){
   var cfg=getCloudCfg();
-  if(!cfg.jsonbinBin||!cfg.jsonbinKey){showAlert('cfg-err','❌ Enter JSONbin credentials first.');return;}
+  if(!cfg.jsonbinBin||!cfg.jsonbinKey){showAlertMsg('cfg-err','❌ Enter JSONbin credentials first.');return;}
+  showAlertMsg('cfg-ok','Testing connection...');
   try{
-    var r=await fetch('https://api.jsonbin.io/v3/b/'+cfg.jsonbinBin+'/latest',{headers:{'X-Master-Key':cfg.jsonbinKey,'X-Bin-Meta':false}});
-    if(r.ok){showAlert('cfg-ok','✅ JSONbin connected successfully!');}
-    else{showAlert('cfg-err','❌ Failed ('+r.status+'). Check your Bin ID and Master Key.');}
-  }catch(e){showAlert('cfg-err','❌ Network error: '+e.message);}
+    var r=await fetch('https://api.jsonbin.io/v3/b/'+cfg.jsonbinBin+'/latest',{headers:{'X-Master-Key':cfg.jsonbinKey}});
+    if(r.ok){
+      showAlertMsg('cfg-ok','✅ JSONbin connected! Saving data now...');
+      await jsonbinSave(DB);
+      showAlertMsg('cfg-ok','✅ Connected & data saved to cloud!');
+      liveRefresh();
+    }else{
+      var txt=await r.text();
+      showAlertMsg('cfg-err','❌ Failed ('+r.status+'): '+txt.substring(0,80));
+    }
+  }catch(e){showAlertMsg('cfg-err','❌ Network error: '+e.message);}
 }
 
 /* ============================================================
@@ -1480,7 +1488,12 @@ const DD={
 async function loadData(){
   try{
     const raw=await jsonbinLoad();
-    if(!raw)return JSON.parse(JSON.stringify(DD));
+    if(!raw){
+      // First time — seed the bin with default structure
+      const fresh=JSON.parse(JSON.stringify(DD));
+      await jsonbinSave(fresh);
+      return fresh;
+    }
     const s=raw;
     if(!s._v||s._v<DV){
       const b=JSON.parse(JSON.stringify(DD));
@@ -1823,8 +1836,8 @@ async function resetAll(){
 }
 
 /* HELPERS */
-function showAlert(id){const el=document.getElementById(id);if(!el)return;el.style.display='block';setTimeout(function(){el.style.display='none';},4500);}
-function showAlertMsg(id,msg){const el=document.getElementById(id);if(!el)return;el.textContent=msg;showAlert(id);}
+function showAlert(id,msg){const el=document.getElementById(id);if(!el)return;if(msg)el.textContent=msg;el.style.display='block';setTimeout(function(){el.style.display='none';},5000);}
+function showAlertMsg(id,msg){const el=document.getElementById(id);if(!el)return;el.textContent=msg;el.style.display='block';clearTimeout(el._t);el._t=setTimeout(function(){el.style.display='none';},5000);}
 function hideAlerts(){Array.prototype.slice.call(arguments).forEach(function(id){const el=document.getElementById(id);if(el)el.style.display='none';});}
 function escQ(s){return String(s).replace(/'/g,"&#39;");}
 function showToast(msg){const t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.style.transform='translateY(0)';t.style.opacity='1';setTimeout(function(){t.style.transform='translateY(80px)';t.style.opacity='0';},3000);}
@@ -2109,10 +2122,15 @@ function animateCounters(){
   const y=new Date().getFullYear()-2021;
   const trophies=DB.achievements.length;
   const el1=document.getElementById('cnt1');if(el1)el1.textContent='100+';
+  // Years active — set immediately, no animation needed
+  const el3=document.getElementById('cnt3');if(el3)el3.textContent=y;
+  const ay=document.getElementById('achYears');if(ay)ay.textContent=y;
+  // Trophies — animate from DB
   const el2=document.getElementById('cnt2');
-  if(el2){let v=0;const t=setInterval(function(){v=Math.min(v+1,trophies);el2.textContent=v;if(v>=trophies)clearInterval(t);},80);}
-  const el3=document.getElementById('cnt3');
-  if(el3){let v=0;const t=setInterval(function(){v=Math.min(v+1,y);el3.textContent=v;if(v>=y)clearInterval(t);},150);}
+  if(el2){
+    if(trophies===0){el2.textContent=0;return;}
+    let v=0;const t=setInterval(function(){v=Math.min(v+1,trophies);el2.textContent=v;if(v>=trophies)clearInterval(t);},80);
+  }
 }
 
 /* GALLERY LIGHTBOX */
@@ -2308,6 +2326,7 @@ window.addEventListener('load',async function(){
   await renderTrophies();
   await renderStaff();
   animateCounters();
+  updateAchStats();
   if(_adm)openAdmin();
 });
 
